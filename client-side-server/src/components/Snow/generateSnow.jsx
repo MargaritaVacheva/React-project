@@ -2,7 +2,7 @@ import React from 'react';
 
 const snow = (Comp) => {
     let animationDelay = '0s';
-    let fontSize = '100px';
+    let fontSize = '0px';
     let arr = Array.from('Snowflakes are awesome!!! They are like little pieces of magic!!! Love snowflakes!!! Snowflakes are awesome!!! They are like little pieces of magic!!! Love snowflakes!!! Snowflakes are awesome!!! They are like little pieces of magic!!! Love snowflakes!!!');
 
     return arr.map((sf, i) => {

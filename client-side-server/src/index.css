@@ -47,8 +47,10 @@ p, ul, ol {
     min-height: 100vh;
     display:flex; 
     flex-direction:column;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('../src/photos/jeshoots-com-7VOyZ0-iO0o-unsplash.jpg');
+    /* background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('../src/photos/jeshoots-com-7VOyZ0-iO0o-unsplash.jpg'); */
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
 }
 
 /* header */
@@ -93,7 +95,7 @@ p, ul, ol {
     padding: 0.4rem;
     border-color: rgb(216, 28, 94);
     border-radius: 0.5rem;
-    box-shadow: 2px 2px 2px rgba(38,16,10,0.8);
+    box-shadow: 2px 2px 2px rgba(233, 103, 68, 0.8);
     transition: 0.3s;
 }
 
@@ -189,7 +191,7 @@ main p {
 .main-section button:hover {
     box-shadow: none;
     opacity: 1;
-  }
+}
 
 /* 
 
