@@ -74,7 +74,7 @@ p, ul, ol {
 
 .site-header ul li {
     display: inline-block; 
-    margin-bottom: 0.4rem;   
+    margin-bottom: 1rem;   
 }
 
 .site-header ul li {
@@ -275,6 +275,15 @@ main p {
     max-width: 100%;
     height: auto; 
 } */
+
+/* ContactPage */
+.contact-map {
+    padding: 3rem 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    color: whitesmoke;
+    /* text-align: center; */
+}
 
 footer {
     background-color: rgba(248, 221, 170, 0);
