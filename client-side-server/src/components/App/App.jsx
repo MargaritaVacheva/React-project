@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Snow from '../Snow';
+// import Snow from '../Snow';
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
 import Games from '../Games';
@@ -32,7 +32,7 @@ const App = () => {
   return (
     <div className="App" style={style}>
       <BrowserRouter>
-        <Snow isSnowing={isSnowing} />
+        {/* <Snow isSnowing={isSnowing} /> */}
         <Navigation snowHandler={snowHandler} />
         <Main>
           <Switch>
