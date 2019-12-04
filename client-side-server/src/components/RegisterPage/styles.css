@@ -1,0 +1,83 @@
+.form-layout {
+    font-family: sans-serif;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+.form-layout div {
+    display: flex;
+    flex-flow: row nowrap;
+    line-height: 2em;
+    margin: 5px; 
+    /* margin-left: 16px;   */
+}
+
+.form-layout h2 {
+    text-align: center;
+    color: #222;
+}
+
+.form-layout Form {
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.form-layout label {
+    color: white;
+    width: 110px;
+    font-size: 1em;
+    line-height: 32px;
+}
+.form-layout input,
+.form-layout select,
+.form-layout textarea {
+    flex: 1;
+    padding: 3px 5px;
+    font-size: 1em;
+    margin-left: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-layout div label {
+    display: block; 
+    text-align: left;
+}
+
+.form-layout div input {
+    margin-right: 3px;  
+}
+
+.form-layout div span {
+    line-height: 32px;
+    margin-left: 10px;
+    color: #800;
+    font-weight: bold;
+}
+
+.form-layout .buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+.form-layout button {
+    margin: 0 10px;
+}
+.form-layout button[type='submit'] {
+    color: blue;
+}
+.form-layout button[type='button'] {
+    color: black;
+}
+
+pre {
+    border: 1px solid #ccc;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+

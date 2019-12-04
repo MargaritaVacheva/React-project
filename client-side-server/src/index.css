@@ -147,7 +147,7 @@ p, ul, ol {
 /* main */
 main {
     width: 100%;
-    height: auto;
+    min-height: 80vh;
 }
 main section {
     text-align: center;
@@ -160,7 +160,7 @@ main p {
 }
 
 .main-section { 
-    padding: 9.2rem 0;
+    padding: 7.9rem 0;
     color: #FFF;
 }
 
