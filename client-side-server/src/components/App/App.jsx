@@ -6,6 +6,7 @@ import HomePage from '../HomePage';
 import Games from '../Games';
 import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
+import Logout from '../Logout';
 import ProfilePage from '../ProfilePage';
 import ContactPage from '../ContactPage';
 // import Aside from '../Aside';
@@ -45,9 +46,8 @@ const App = () => {
             <Route exact path="/login" >
               <LoginPage setImageUrl={setImageUrl} />
             </Route>
+            <Route path="/logout" component={Logout} />
             <Route path="/games" component={Games} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/login" component={LoginPage} />
             <Route path="/profile" component={ProfilePage} />
             <Route path="/contacts" component={ContactPage} />
           </Switch>

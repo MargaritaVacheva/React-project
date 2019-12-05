@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
+import { Link, useHistory } from 'react-router-dom';
+import services from '../../services/user-services';
+import imageUrl from '../../photos/joanna-kosinska-llLttk4TgT4-unsplash.jpg';
 import './styles.css';
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-export const onSubmit = async values => {
-    await sleep(300)
-    window.alert(JSON.stringify(values, 0, 2))
-}
 
-const RegisterPage = () => {
-    useEffect(() => {
+const RegisterPage = ( {setImageUrl }) => {
+    setImageUrl(imageUrl);
+    const history = useHistory();
 
-    })
+    const onSubmit = (values) => {  
+        services.register(values)
+        .then(() => history.push("/login"))
+        .catch(err => console.log(err));
+    }
 
     return (
         <div className="form-layout">
@@ -76,6 +79,7 @@ const RegisterPage = () => {
                             )}
                         </Field>
                         <div className="buttons">
+                        <Link to="/login">SignIn</Link>
                             <button type="submit" disabled={submitting}>
                                 Submit
                             </button>

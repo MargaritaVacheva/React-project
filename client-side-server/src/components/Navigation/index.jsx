@@ -6,8 +6,8 @@ import './styles.css';
 const Navigation = (props) => {
   return (
     <header className="site-header">
-      <p className="header-title">
-        <DaysToCmas /> Days to Christmas</p>
+      <Link to="/" className="header-title">
+        <DaysToCmas /> Days to Christmas</Link>
       <nav>
         <ul>
           <li><Link to='/games'>Games</Link></li>

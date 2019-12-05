@@ -8,7 +8,6 @@ const HomePage = ({ setImageUrl }) => {
    
     return (
         <>
-            <div> 'home'</div>
             <section className="main-section">
                 <h1>Enjoy your favorite Christmas games</h1>
                 <button>Play</button>

@@ -1,10 +1,22 @@
 import React from 'react';
 import imageUrl from '../../photos/miroslava-mTtuQIrDZMg-unsplash.jpg';
+import { Link, useHistory } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
-import { onSubmit } from '../RegisterPage';
+import services from '../../services/user-services';
 
 const LoginPage = ({ setImageUrl }) => {
     setImageUrl(imageUrl);
+    const history = useHistory();
+
+    const onSubmit = (values) => {  
+        console.log(values);
+        services.login(values)
+        .then((data) => {
+            console.log(data)
+            history.push("/")
+        })
+        .catch(err => console.log(err));
+    }
 
     return (
     <div className="form-layout">
@@ -42,6 +54,7 @@ const LoginPage = ({ setImageUrl }) => {
                         )}
                     </Field>
                     <div className="buttons">
+                    <Link to="/register">SignUp</Link>
                         <button type="submit" disabled={submitting}>
                             Submit
                     </button>

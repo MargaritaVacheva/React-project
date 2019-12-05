@@ -63,6 +63,10 @@ p, ul, ol {
     padding: 0.3rem 1rem;
 }
 
+.site-header a {
+    text-decoration: none;
+}
+
 .site-header nav {
     display: inline-block;  
 }
@@ -94,7 +98,7 @@ p, ul, ol {
     text-decoration: none;
     padding: 0.4rem;
     border-color: rgb(216, 28, 94);
-    border-radius: 0.5rem;
+    border-radius: 0.4em;
     box-shadow: 2px 2px 2px rgba(233, 103, 68, 0.8);
     transition: 0.3s;
 }
