@@ -1,11 +1,11 @@
 import React from 'react';
-import imageUrl from '../../photos/miroslava-mTtuQIrDZMg-unsplash.jpg';
+// import imageUrl from '../../photos/miroslava-mTtuQIrDZMg-unsplash.jpg';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
 import services from '../../services/user-services';
 
 const LoginPage = ({ setImageUrl }) => {
-    setImageUrl(imageUrl);
+    // setImageUrl(imageUrl);
     const history = useHistory();
 
     const onSubmit = values => {

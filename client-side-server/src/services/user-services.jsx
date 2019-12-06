@@ -17,7 +17,8 @@ const userServices = {
             body: JSON.stringify(data),
             headers: {
                 'Content-type': 'application/json'
-            }
+            },
+            credentials: 'include'
         }).then(res => {
             return res.status === 200 ?
                     res.json() : Promise.reject(res.status)

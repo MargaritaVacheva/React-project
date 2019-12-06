@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import Snow from '../Snow';
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
-import Games from '../Games';
+import Recipes from '../Recipes';
 import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
 import Logout from '../Logout';
@@ -13,11 +13,12 @@ import ContactPage from '../ContactPage';
 import Main from '../Main';
 import Footer from '../Footer';
 import './App.css';
+import imageDefault from '../../photos/joanna-kosinska-llLttk4TgT4-unsplash.jpg';
 
 const App = () => {
   const [isSnowing, setIsSnow] = useState(false);
-  const [background, setBackground] = useState("green");
-  const [imageUrl, setImageUrl] = useState("");
+  const [background, setBackground] = useState("");
+  const [imageUrl, setImageUrl] = useState(imageDefault);
 
   const snowHandler = (ev) => {
     isSnowing ?
@@ -47,7 +48,7 @@ const App = () => {
               <LoginPage setImageUrl={setImageUrl} />
             </Route>
             <Route path="/logout" component={Logout} />
-            <Route path="/games" component={Games} />
+            <Route path="/recipes" component={Recipes} />
             <Route path="/profile" component={ProfilePage} />
             <Route path="/contacts" component={ContactPage} />
           </Switch>
