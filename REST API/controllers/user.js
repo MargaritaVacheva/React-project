@@ -12,7 +12,10 @@ module.exports = {
         one: (req, res, next) => {
             const id = req.params.id;
             models.User.find({ _id: id})
-                .then((user) => res.send(user))
+                .then((user) => {
+                    if ( !user ) { res.status(404).send("User Not Found!"); return;}
+                    res.send(user);
+                })
                 .catch(next)
         }
     },

@@ -19,9 +19,8 @@ const userServices = {
                 'Content-type': 'application/json'
             }
         }).then(res => {
-            return res.text()
-                .then(text => res.status === 200 ?
-                    text : Promise.reject(text))
+            return res.status === 200 ?
+                    res.json() : Promise.reject(res.status)
         })
     },
     logout: () => {

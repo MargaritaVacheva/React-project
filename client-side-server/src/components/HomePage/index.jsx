@@ -9,7 +9,7 @@ const HomePage = ({ setImageUrl }) => {
     return (
         <>
             <section className="main-section">
-                <h1>Enjoy your favorite Christmas games</h1>
+                <h1>Enjoy your favorite Christmas ...</h1>
                 <button>Play</button>
                 <p>If you don't have account <a href="register">singUp</a> for free!</p>
             </section>

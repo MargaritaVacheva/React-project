@@ -54,11 +54,16 @@
     margin-right: 3px;  
 }
 
-.form-layout div span {
-    line-height: 32px;
-    margin-left: 10px;
+.form-layout p,
+.form-layout span {
+    line-height: 1;
+    /* margin-left: 10px; */
     color: #800;
     font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    padding-left: 8em;
+    padding-bottom: 0;
 }
 
 .form-layout .buttons {
