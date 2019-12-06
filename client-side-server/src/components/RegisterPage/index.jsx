@@ -2,11 +2,9 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
 import services from '../../services/user-services';
-import imageUrl from '../../photos/joanna-kosinska-llLttk4TgT4-unsplash.jpg';
 import './styles.css';
 
-const RegisterPage = ({ setImageUrl }) => {
-    setImageUrl(imageUrl);
+const RegisterPage = () => {
     const history = useHistory();
 
     const onSubmit = (values) => {

@@ -1,10 +1,7 @@
 import React from 'react';
-import background from '../../photos/jeshoots-com-7VOyZ0-iO0o-unsplash.jpg';
 import './styles.css';
 
-const HomePage = ({ setImageUrl }) => {
-  
-    setImageUrl(background);
+const HomePage = () => {
    
     return (
         <>

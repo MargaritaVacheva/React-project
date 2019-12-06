@@ -1,21 +1,24 @@
-import React from 'react';
-// import imageUrl from '../../photos/miroslava-mTtuQIrDZMg-unsplash.jpg';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
 import services from '../../services/user-services';
 
-const LoginPage = ({ setImageUrl }) => {
-    // setImageUrl(imageUrl);
+const LoginPage = () => {
     const history = useHistory();
+    const [stateErrors, setErrors] = useState({});
 
     const onSubmit = values => {
+        console.log(stateErrors);
         services.login(values)
             .then((data) => {
                 console.log(data);
-                localStorage.setItem("username", data.username);
                 history.push("/");
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                setErrors({ err }); 
+                console.log(err);
+                console.log(stateErrors);   
+            });
     }
 
     return (
@@ -23,16 +26,7 @@ const LoginPage = ({ setImageUrl }) => {
             <h2>Login</h2>
             <Form
                 onSubmit={onSubmit}
-                validate={values => {
-                    const errors = {}
-                    if (!values.username) {
-                        errors.username = 'Required'
-                    }
-                    if (!values.password) {
-                        errors.password = 'Required'
-                    }
-                    return errors
-                }}
+                validate={handleValidation}
                 render={({ handleSubmit, form, submitting, pristine, values }) => (
                     <form onSubmit={(ev) => { ev.preventDefault(); handleSubmit(); }}>
                         <Field name="username">
@@ -74,3 +68,14 @@ const LoginPage = ({ setImageUrl }) => {
 }
 
 export default LoginPage;
+
+const handleValidation = values => {
+    const errors = {}
+    if (!values.username) {
+        errors.username = 'Required'
+    }
+    if (!values.password) {
+        errors.password = 'Required'
+    }
+    return errors
+}

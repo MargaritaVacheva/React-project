@@ -38,16 +38,10 @@ const App = () => {
         <Navigation snowHandler={snowHandler} />
         <Main>
           <Switch>
-            <Route exact path="/" >
-              <HomePage setImageUrl={setImageUrl} />
-            </Route>
-            <Route exact path="/register" >
-              <RegisterPage setImageUrl={setImageUrl} />
-            </Route>
-            <Route exact path="/login" >
-              <LoginPage setImageUrl={setImageUrl} />
-            </Route>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
             <Route path="/logout" component={Logout} />
+            <Route path="/register" component={RegisterPage} />
             <Route path="/recipes" component={Recipes} />
             <Route path="/profile" component={ProfilePage} />
             <Route path="/contacts" component={ContactPage} />
