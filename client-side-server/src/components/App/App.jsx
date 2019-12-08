@@ -57,7 +57,7 @@ const App = () => {
                   <Route path="/recipes" component={Recipes} />
                   <Route path="/contacts" component={ContactPage} />
                   <RouteAuthWrapper path="/profile" component={ProfilePage} />
-                  <Route path="/logout" component={Logout} />
+                  <RouteAuthWrapper path="/logout" component={Logout} />
                 </Switch>
               </Main>
               <Footer />
