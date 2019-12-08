@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
+import { UserContext } from '../App/App';
 import services from '../../services/user-services';
 
 const LoginPage = () => {
     const history = useHistory();
     const [stateErrors, setErrors] = useState({});
+    const { setUser } = useContext(UserContext);
 
     const onSubmit = values => {
         console.log(stateErrors);
         services.login(values)
             .then((data) => {
-                console.log(data);
+                console.log(data, 'data');
+                setUser(data);
                 history.push("/");
             })
             .catch(err => {

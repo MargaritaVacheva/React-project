@@ -1,9 +1,11 @@
 
-const hostUrl = 'http://localhost:9999/api/user';
+const userUrl = 'http://localhost:9999/api/user'
+const hostUrl = 'http://localhost:9999/api'
+
 
 const userServices = {
     register: (data) => {
-        return fetch(`${hostUrl}/register`, {
+        return fetch(`${userUrl}/register`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -12,7 +14,7 @@ const userServices = {
         }).then(res => res.json())
     },
     login: (data) => {
-        return fetch(`${hostUrl}/login`, {
+        return fetch(`${userUrl}/login`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -25,14 +27,27 @@ const userServices = {
         })
     },
     logout: () => {
-        return fetch(`${hostUrl}/logout`, {
+        return fetch(`${userUrl}/logout`, {
           method: 'POST',
           credentials: 'include'
-        }).then(res => res.text());
+        }).then(res => {
+            return res.status === 200 ?
+                    res.text() : res.text().then(text => Promise.reject(text))
+        })
     },
     load: (id) => {
-        return fetch(`${hostUrl}/${id ? id : ''}`)
+        return fetch(`${userUrl}/${id ? id : ''}`)
         .then(res => res.json());
+    },
+    auth: () => {
+        return fetch(`${hostUrl}/auth`, {
+            credentials: 'include'
+        })
+        .then(res => {
+            return  res.status === 200 ?
+                res.json()
+               : res.text().then(text => Promise.reject(text))
+        });
     }
 }
 

@@ -51,11 +51,16 @@ module.exports = {
             console.log('-'.repeat(100));
             console.log(token);
             console.log('-'.repeat(100));
-            models.TokenBlacklist.create({ token })
-                .then(() => {
-                    res.clearCookie(config.authCookieName).send('Logout successfully!');
-                })
-                .catch(next);
+            
+            if ( token ) {
+                models.TokenBlacklist.create({ token })
+                    .then(() => {
+                        res.clearCookie(config.authCookieName).status(200).send('Logout successfully!');
+                    })
+                    .catch(next);
+            } else {
+                res.status(401).send('No User. Logout failed!')
+            }
         }
     },
 

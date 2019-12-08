@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import services from '../../services/user-services';
+// import React, { useEffect } from 'react';
+// import services from '../../services/user-services';
 
 const ProfilePage = ( ) => {
     // useEffect(() => {
