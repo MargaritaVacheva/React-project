@@ -5,8 +5,8 @@ import { AuthContext } from '../App/App'
 import './styles.css';
 
 const Navigation = (props) => {
-  const { auth } = useContext(AuthContext);
-  console.log(`${auth}`, ' - auth from Nav');
+  const { authenticated } = useContext(AuthContext);
+  console.log(`${authenticated}`, ' - auth from Nav');
 
   return (
     <header className="site-header">
@@ -15,7 +15,7 @@ const Navigation = (props) => {
       <nav>
         <ul>
           {
-            auth > 0 ?
+            authenticated ?
               <>
                 <li><Link to='/recipes'>Recipes</Link></li>
                 <li><Link to='/profile'>Profile</Link></li>

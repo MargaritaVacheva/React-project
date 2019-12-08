@@ -1,5 +1,5 @@
-import React, { useState, useMemo, createContext, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useState, useMemo, createContext, useContext } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 // import Snow from '../Snow';
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
@@ -24,15 +24,11 @@ const App = () => {
   const [background, setBackground] = useState("");
   const [imageUrl, setImageUrl] = useState(imageDefault);
 
-  const [auth, setAuth] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
   const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
-  const authValue = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
-
-  // useEffect(() => {
-  //   setAuth(6);
-  // }, [])
+  const authValue = useMemo(() => ({ authenticated, setAuthenticated }), [authenticated, setAuthenticated]);
 
   const snowHandler = (ev) => {
     isSnowing ?
@@ -57,11 +53,11 @@ const App = () => {
                 <Switch>
                   <Route exact path="/" component={HomePage} />
                   <Route path="/login" component={LoginPage} />
-                  <Route path="/logout" component={Logout} />
                   <Route path="/register" component={RegisterPage} />
                   <Route path="/recipes" component={Recipes} />
-                  <Route path="/profile" component={ProfilePage} />
                   <Route path="/contacts" component={ContactPage} />
+                  <RouteAuthWrapper path="/profile" component={ProfilePage} />
+                  <Route path="/logout" component={Logout} />
                 </Switch>
               </Main>
               <Footer />
@@ -75,16 +71,17 @@ const App = () => {
 
 export default App;
 
-//authRoutWrapper
-// export default ({ render, ...routeProps }) => {
-//   const { authenticated } = useContext(RootContext);
-//   return (
-//     <Route
-//       {...routeProps}
-//       render={() => (authenticated ? 
-//         render() : 
-//         <Redirect to='/login' />)
-//       }
-//     />
-//   );
-// };
+
+const RouteAuthWrapper = ({  component: Component , ...routeProps }) => {
+  const { authenticated } = useContext(AuthContext);
+  console.log(authenticated);
+  return (
+    <Route
+      {...routeProps}
+      render={() => (authenticated ? 
+        <Component/> : 
+        <Redirect to='/login' />)
+      }
+    />
+  );
+};
