@@ -10,7 +10,7 @@ const Logout = () => {
     services.logout()
     .then((res) => {
         console.log(res);
-        setUser({});
+        setUser(null);
         history.push("/");
     })
     .catch(err => console.log(err))

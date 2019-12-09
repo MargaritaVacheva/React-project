@@ -16,7 +16,6 @@ import Auth from '../Auth';
 import './App.css';
 import imageDefault from '../../photos/joanna-kosinska-llLttk4TgT4-unsplash.jpg';
 
-export const AuthContext = createContext(null);
 export const UserContext = createContext(null);
 
 const App = () => {
@@ -24,11 +23,9 @@ const App = () => {
   const [background, setBackground] = useState("");
   const [imageUrl, setImageUrl] = useState(imageDefault);
 
-  const [authenticated, setAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
   const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
-  const authValue = useMemo(() => ({ authenticated, setAuthenticated }), [authenticated, setAuthenticated]);
 
   const snowHandler = (ev) => {
     isSnowing ?
@@ -45,7 +42,6 @@ const App = () => {
     <div className="App" style={style}>
       <BrowserRouter>
         <UserContext.Provider value={userValue}>
-          <AuthContext.Provider value={authValue}>
             <Auth>
               {/* <Snow isSnowing={isSnowing} /> */}
               <Navigation snowHandler={snowHandler} />
@@ -54,7 +50,7 @@ const App = () => {
                   <Route exact path="/" component={HomePage} />
                   <Route path="/login" component={LoginPage} />
                   <Route path="/register" component={RegisterPage} />
-                  <Route path="/recipes" component={Recipes} />
+                  <RouteAuthWrapper path="/recipes" component={Recipes} />
                   <Route path="/contacts" component={ContactPage} />
                   <RouteAuthWrapper path="/profile" component={ProfilePage} />
                   <RouteAuthWrapper path="/logout" component={Logout} />
@@ -62,7 +58,6 @@ const App = () => {
               </Main>
               <Footer />
             </Auth>
-          </AuthContext.Provider>
         </UserContext.Provider>
       </BrowserRouter >
     </div >
@@ -73,12 +68,11 @@ export default App;
 
 
 const RouteAuthWrapper = ({  component: Component , ...routeProps }) => {
-  const { authenticated } = useContext(AuthContext);
-  console.log(authenticated);
+  const { user } = useContext(UserContext);
   return (
     <Route
       {...routeProps}
-      render={() => (authenticated ? 
+      render={() => (user ? 
         <Component/> : 
         <Redirect to='/login' />)
       }

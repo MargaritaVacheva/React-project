@@ -12,7 +12,7 @@ module.exports = (app) => {
             .then(user => {
                 return res.status(200).send(user) 
             })
-            .catch(() => res.status(401).send('No no no..'));
+            .catch(() => res.status(200).send('No no no..'));
     });
 
 

@@ -1,17 +1,14 @@
-// import React, { useEffect } from 'react';
-// import services from '../../services/user-services';
+import React, { useEffect, useContext } from 'react';
+import { UserContext } from '../App/App';
+import services from '../../services/user-services';
 
 const ProfilePage = ( ) => {
-    // useEffect(() => {
-    //     services.load(id)
-    //     .then(data => {
-    //         console.log(data);
-    //     })
-    //     .catch(err => console.log(err))
-    // }, []);
+    const { user } = useContext(UserContext);
+    
+    // console.log(user);
 
     return ( 
-        'profile'
+    <pre>{JSON.stringify(user, null, 2)}</pre>
      );
 }
  

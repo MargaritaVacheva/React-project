@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import DaysToCmas from '../DaysToCmas';
-import { AuthContext } from '../App/App'
+import { UserContext } from '../App/App'
 import './styles.css';
 
 const Navigation = (props) => {
-  const { authenticated } = useContext(AuthContext);
-  console.log(`${authenticated}`, ' - auth from Nav');
+  const { user } = useContext(UserContext);
+  console.log(`${user}`, ' - user from Nav');
 
   return (
     <header className="site-header">
@@ -15,7 +15,7 @@ const Navigation = (props) => {
       <nav>
         <ul>
           {
-            authenticated ?
+            user ?
               <>
                 <li><Link to='/recipes'>Recipes</Link></li>
                 <li><Link to='/profile'>Profile</Link></li>

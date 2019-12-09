@@ -1,23 +1,21 @@
 import React, { useContext, useEffect } from 'react';
-import { AuthContext, UserContext } from '../App/App';
+import { UserContext } from '../App/App';
 import services from '../../services/user-services'
 
 const Auth = ({ children }) => {
-    const { authenticated, setAuthenticated } = useContext(AuthContext);
-    const { user } = useContext(UserContext);
-
+    const { setUser } = useContext(UserContext);
+    
     useEffect(() => {
         services.auth()
             .then(res => {
                 console.log(res, 'res from Auth');
-                setAuthenticated(true);
-                console.log(authenticated, ' - auth from Auth');
+                setUser(res);
             })
-            .catch(err =>{
-                setAuthenticated(false);
+            .catch(err => {
+                setUser(null);
                 console.log(err, 'Err from Auth');
-            })
-    }, [user] );
+            });
+    }, [])
 
     return <>{children}</>
 }
