@@ -30,6 +30,12 @@ const Navigation = (props) => {
           <li><Link to="/contacts">Contacts</Link></li>
         </ul>
         <button onClick={props.snowHandler}>Let it Snow!</button>
+        {
+          user ?
+        <span>Welcome, {user.username}!</span>  :             
+          ""
+        }
+
       </nav>
     </header>
   );

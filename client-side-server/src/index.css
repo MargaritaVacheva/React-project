@@ -71,6 +71,12 @@ p, ul, ol {
     display: inline-block;  
 }
 
+.site-header nav span {
+    margin-left: 1em;  
+    color: rgb(216, 28, 94);
+    font-weight: bold;
+}
+
 .site-header nav ul {
     padding: 0;
     display: inline;
@@ -195,6 +201,35 @@ main p {
 .main-section button:hover {
     box-shadow: none;
     opacity: 1;
+}
+
+/* profile-page */
+
+section.profile  {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+div.profile {
+    background-color: wheat;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    margin: 1em auto;   
+}
+.profile div {
+    display: flex;
+    flex-flow: row nowrap;
+    line-height: 1.5em;
+}
+.profile div label {
+    display: block;
+    width: 49%;
+    margin-right: 1em;
+    text-align: right;
 }
 
 /* 
