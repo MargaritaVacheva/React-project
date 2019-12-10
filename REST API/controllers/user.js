@@ -30,7 +30,7 @@ module.exports = {
 
         login: (req, res, next) => {
             const { username, password } = req.body;
-            models.User.findOne({ username })
+            models.User.findOne({ username }).populate('recipes')
               .then((user) => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
               .then(([user, match]) => {
                 if (!match) {
@@ -41,7 +41,7 @@ module.exports = {
                 const token = utils.jwt.createToken({ id: user._id });
                 let {_id, username, email} = user;
                 let userInfo = {_id, username, email} ;
-                res.cookie(config.authCookieName, token).send(userInfo);
+                res.cookie(config.authCookieName, token).send(user);
               })
               .catch(next);
         },

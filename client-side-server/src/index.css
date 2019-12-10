@@ -232,6 +232,20 @@ div.profile {
     text-align: right;
 }
 
+.profile p {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.profile div a {
+    margin: 1em auto;
+    color: white;
+    padding: 0.5em 1em;
+    background-color: rgb(223, 4, 82);
+    border-radius: 0.5em;
+    text-decoration: none;
+}
+
 /* 
 
 .site-info {

@@ -6,7 +6,7 @@ import services from '../../services/user-services';
 
 const LoginPage = () => {
     const history = useHistory();
-    const [stateErrors, setErrors] = useState({});
+    const [stateErrors, setErrors] = useState(null);
     const { setUser } = useContext(UserContext);
 
     const onSubmit = values => {
@@ -23,6 +23,8 @@ const LoginPage = () => {
                 console.log(stateErrors);   
             });
     }
+
+    //To Do stateErrors
 
     return (
         <div className="form-layout">
@@ -61,6 +63,7 @@ const LoginPage = () => {
                                 disabled={submitting || pristine} >
                                 Reset
                     </button>
+                    {stateErrors && (stateErrors.err === 401) && <span>Wrong username or password</span>}
                         </div>
                         <pre>{JSON.stringify(values, 0, 2)}</pre>
                     </form>

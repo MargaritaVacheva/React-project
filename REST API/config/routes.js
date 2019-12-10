@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.get('/api/auth', (req, res) => {
         const token = req.cookies[config.authCookieName];
         utils.jwt.verifyToken(token)
-            .then(({ id }) => models.User.findById(id))
+            .then(({ id }) => models.User.findById(id).populate('recipes'))
             .then(user => {
                 return res.status(200).send(user) 
             })

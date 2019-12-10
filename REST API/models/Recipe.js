@@ -20,6 +20,11 @@ const recipeSchema = new Schema({
         required: true,
     },
 
+    category: {
+        type: String,
+        required: true,
+    },
+
     serves: {
         type: Number,
         required: true,

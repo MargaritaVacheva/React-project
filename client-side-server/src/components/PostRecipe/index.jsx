@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
+import { UserContext } from '../App/App';
+
 
 const RegisterPage = () => {
     const history = useHistory();
+    const { setUser } = useContext(UserContext);
 
     const onSubmit = (values) => {
         recipeServices.post(values)
-            .then(() => history.push("/profile"))
+            .then((res) => {
+                setUser(res[0]);
+                console.log(res[0]);
+                history.push("/profile");
+            })
             .catch(err => console.log(err));
     }
 
