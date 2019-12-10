@@ -246,6 +246,25 @@ div.profile {
     text-decoration: none;
 }
 
+/* error-page */
+
+section.error-section {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 70%;
+    color: wheat;
+    padding-top: 1em;
+    padding-bottom: 20em;
+    margin: 0 auto;
+}
+
+.error-section a {
+    color: rgb(207, 111, 111);
+    font-weight: bold;
+}
+
+
 /* 
 
 .site-info {
