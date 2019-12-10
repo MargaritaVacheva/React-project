@@ -9,6 +9,7 @@ import LoginPage from '../LoginPage';
 import Logout from '../Logout';
 import ProfilePage from '../ProfilePage';
 import ContactPage from '../ContactPage';
+import ErrorPage from '../ErrorPage';
 // import Aside from '../Aside';
 import Main from '../Main';
 import Footer from '../Footer';
@@ -54,6 +55,7 @@ const App = () => {
                   <Route path="/contacts" component={ContactPage} />
                   <RouteAuthWrapper path="/profile" component={ProfilePage} />
                   <RouteAuthWrapper path="/logout" component={Logout} />
+                  <Route path="*" component={ErrorPage} />
                 </Switch>
               </Main>
               <Footer />
