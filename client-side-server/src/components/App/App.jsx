@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
 import Recipes from '../Recipes';
+import PostRecipe from '../PostRecipe';
 import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
 import Logout from '../Logout';
@@ -51,8 +52,9 @@ const App = () => {
                   <Route exact path="/" component={HomePage} />
                   <Route path="/login" component={LoginPage} />
                   <Route path="/register" component={RegisterPage} />
-                  <RouteAuthWrapper path="/recipes" component={Recipes} />
                   <Route path="/contacts" component={ContactPage} />
+                  <RouteAuthWrapper exact path="/recipes" component={Recipes} />
+                  <RouteAuthWrapper path="/postRecipe" component={PostRecipe} />
                   <RouteAuthWrapper path="/profile" component={ProfilePage} />
                   <RouteAuthWrapper path="/logout" component={Logout} />
                   <Route path="*" component={ErrorPage} />

@@ -4,7 +4,7 @@ import { UserContext } from '../App/App';
 const ProfilePage = () => {
     const { user } = useContext(UserContext);
 
-    // console.log(user);
+    console.log(user);
 
     return (
         <>

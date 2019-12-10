@@ -12,13 +12,13 @@ module.exports = (app) => {
             .then(user => {
                 return res.status(200).send(user) 
             })
-            .catch(() => res.status(200).send('No no no..'));
+            .catch(() => res.status(401).send('No no no..'));
     });
 
 
     app.use('/api/user', router.user);
 
-    app.use('/api/origami', router.origami);
+    app.use('/api/recipe', router.recipe);
 
     app.use('*', (req, res, next) => res.send('<h1> Something went wrong. Try again. :thumbsup: </h1>'))
 };

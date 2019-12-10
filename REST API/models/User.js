@@ -25,7 +25,7 @@ const userSchema = new Schema({
         required: true
     },
 
-    posts: [{ type: ObjectId, ref: "Origami" }]
+    recipes: [{ type: ObjectId, ref: "Recipe" }]
 
 });
 
