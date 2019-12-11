@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const RecipeCard = ({ recipe }) => {
     const { user } = useContext(UserContext);
-    
+
 
     console.log(recipe);
     const { _id, image, title, method, ingredients, category, serves, cookingTime, prepTime, author } = recipe;
@@ -23,11 +23,7 @@ const RecipeCard = ({ recipe }) => {
                     <span className="recipe-prepTime">{prepTime}</span>
                 </div>
                 <span className="recipe-author">{author.username}</span>
-                {(user._id === author._id) ?
-                    <div>
-                        <Link to="`/edit-recipe/${_id}`">Edit</Link>
-                    </div> : ""
-                }
+                <Link to={`/details/${_id}`}>Details</Link>
             </div>
         </div>
     );

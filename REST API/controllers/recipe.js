@@ -2,20 +2,19 @@ const models = require('../models');
 
 module.exports = {
     get: (req, res, next) => {
-        const id = req.params.id;
-
-        if ( id ) {
-            models.Recipe.find({_id: id}).populate('author')
-            .then((recipe) => res.send(recipe))
-            .catch(next);
-            return;
-        }
-
         models.Recipe.find().populate('author')
             .then((recipes) => res.send(recipes))
             .catch(next);
-       
+
     },
+    getOne: (req, res, next) => {
+        const id = req.params.id;
+
+        models.Recipe.find({ _id: id }).populate('author')
+            .then((recipe) => res.send(recipe))
+            .catch(next);
+    },
+
 
     post: (req, res, next) => {
         const { title, ingredients, method, serves, cookingTime, prepTime, category } = req.body;
@@ -24,12 +23,12 @@ module.exports = {
         models.Recipe.create({ title, ingredients, method, serves, cookingTime, prepTime, category, author: _id })
             .then((createdRecipe) => {
                 return Promise.all([
-                    models.User.updateOne({ _id }, { $push: { recipes: createdRecipe } }, { new: true}).populate('recipes'),
+                    models.User.updateOne({ _id }, { $push: { recipes: createdRecipe } }, { new: true }).populate('recipes'),
                     models.Recipe.findOne({ _id: createdRecipe._id }).populate('author')
                 ]);
             })
             .then(([modifiedObj, recipeObj]) => {
-                res.send([modifiedObj, recipeObj]); 
+                res.send([modifiedObj, recipeObj]);
             })
             .catch(next);
     },

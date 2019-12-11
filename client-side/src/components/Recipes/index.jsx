@@ -16,6 +16,7 @@ const Recipes = () => {
 
     return (
         <section className="all-recipes">
+            <h1>All recipes</h1>
             {recipes ?
                 <>
                     <div>{recipes.map((recipe, i) => <RecipeCard recipe={recipe} key={i} />)}</div>
@@ -25,7 +26,6 @@ const Recipes = () => {
                 <div>Loading...</div>
             }
         </section>
-
     );
 }
 

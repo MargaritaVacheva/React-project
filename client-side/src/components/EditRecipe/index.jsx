@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { Form, Field } from 'react-final-form';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
 import { UserContext } from '../App/App';
 
 
-const RegisterPage = () => {
+const EditRecipe = () => {
     const history = useHistory();
     const { setUser } = useContext(UserContext);
+    const { id } = useParams();
 
     const onSubmit = (values) => {
         recipeServices.post(values)
@@ -21,7 +22,7 @@ const RegisterPage = () => {
 
     return (
         <div className="form-layout">
-            <h2>Share your favourite recipe! :)</h2>
+            <h2>Edit recipe</h2>
             <Form
                 onSubmit={onSubmit}
                 validate={handleValidation}
@@ -41,55 +42,55 @@ const RegisterPage = () => {
                         <Field name="ingredients">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Ingredients</label>
-                                    <input {...input} type="text" placeholder="Ingredients" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Ingredients</label>
+                                        <input {...input} type="text" placeholder="Ingredients" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="method">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Method</label>
-                                    <input {...input} type="text" placeholder="Method" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Method</label>
+                                        <input {...input} type="text" placeholder="Method" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="serves">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Serves</label>
-                                    <input {...input} type="number" placeholder="1" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Serves</label>
+                                        <input {...input} type="number" placeholder="1" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="cookingTime">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Cook time</label>
-                                    <input {...input} type="number" placeholder="0" min="0" max="1440"/>
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Cook time</label>
+                                        <input {...input} type="number" placeholder="0" min="0" max="1440" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="prepTime">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Preparing-time</label>
-                                    <input {...input} type="number" placeholder="5" min="5" max="1440" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Preparing-time</label>
+                                        <input {...input} type="number" placeholder="5" min="5" max="1440" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
@@ -113,7 +114,7 @@ const RegisterPage = () => {
     );
 }
 
-export default RegisterPage;
+export default EditRecipe;
 
 const handleValidation = values => {
 
@@ -132,12 +133,12 @@ const handleValidation = values => {
 
     if (!values.serves) {
         errors.serves = 'required'
-    } 
+    }
     if (!values.cookingTime) {
         errors.cookingTime = 'required'
-    } 
+    }
     if (!values.prepTime) {
         errors.prepTime = 'required'
-    } 
+    }
     return errors
 }

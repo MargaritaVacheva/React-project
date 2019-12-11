@@ -5,7 +5,7 @@ import recipeServices from '../../services/recipes-services';
 import { UserContext } from '../App/App';
 
 
-const RegisterPage = () => {
+const PostRecipe = () => {
     const history = useHistory();
     const { setUser } = useContext(UserContext);
 
@@ -113,7 +113,7 @@ const RegisterPage = () => {
     );
 }
 
-export default RegisterPage;
+export default PostRecipe;
 
 const handleValidation = values => {
 
