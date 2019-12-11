@@ -80,6 +80,9 @@ p, ul, ol {
 .site-header nav ul {
     padding: 0;
     display: inline;
+    background-color: rgb(216, 28, 94);
+    padding: 1em;
+    margin-left: 6em;
 }
 
 .site-header ul li {
@@ -93,7 +96,8 @@ p, ul, ol {
 
 .site-header ul li :hover, 
 .site-header button:hover {
-  background-color: rgb(223, 4, 82);
+  background-color: rgb(216, 28, 94);
+  color: rgb(66, 42, 19);
   box-shadow: none;
 }
 
@@ -105,7 +109,7 @@ p, ul, ol {
     padding: 0.4rem;
     border-color: rgb(216, 28, 94);
     border-radius: 0.4em;
-    box-shadow: 2px 2px 2px rgba(233, 103, 68, 0.8);
+    /* box-shadow: 2px 2px 2px rgba(233, 103, 68, 0.8); */
     transition: 0.3s;
 }
 
@@ -135,14 +139,13 @@ p, ul, ol {
 
 .header-title {
     display: inline-block;
-    min-width: 40%;
+    min-width: 30%;
     font-family: 'Pacifico', serif;
     font-size: 30px;
     text-align: left;
     color: rgb(216, 28, 94);
     padding: 0.3em 0 0 0.7em ;
     margin-bottom: 0.4em;
-    /* text-shadow: 5px 2px 5px rgb(248, 232, 227); */
 }
 
 .header-title span {
@@ -214,6 +217,15 @@ section.all-recipes {
     padding: 1em 2em;
 }
 
+section.all-recipes h1{
+    font-family: 'Pacifico', serif;
+    font-size: 2.4em;
+    text-align: center;
+    color: rgb(216, 28, 94);
+    padding: 0.3em 0 0 0.7em ;
+    margin-bottom: 0.4em;
+}
+
 section.all-recipes div {
     display: flex;
     flex-wrap: wrap;
@@ -222,7 +234,7 @@ section.all-recipes div {
 
 div.recipe-tile {
     flex: 0 1 30%;
-    border: 1px solid gray;
+    border: 1px solid rgba(128, 128, 128, 0.774);
     width: calc( (100% / 3) - 2em );
     height: 30em;
     padding: 0.8em;

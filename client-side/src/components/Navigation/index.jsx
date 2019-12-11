@@ -11,6 +11,7 @@ const Navigation = (props) => {
     <header className="site-header">
       <Link to="/" className="header-title">
         <DaysToCmas /> Days to Christmas</Link>
+      <button onClick={props.snowHandler}>Let it Snow!</button>
       <nav>
         <ul>
           {
@@ -29,11 +30,10 @@ const Navigation = (props) => {
           <li><Link to="/postRecipe">Add Recipe</Link></li>
           <li><Link to="/contacts">Contacts</Link></li>
         </ul>
-        <button onClick={props.snowHandler}>Let it Snow!</button>
         {
           user ?
-        <span>Welcome, {user.username}!</span>  :             
-          ""
+            <span>Welcome, {user.username}!</span> :
+            ""
         }
 
       </nav>

@@ -8,7 +8,7 @@ const HomePage = () => {
         <>
             <section className="main-section">
                 <h1>Enjoy your favorite Christmas recipes</h1>
-                <Link to='/recipes' className="link-button">Cook</Link>
+                <Link to='/recipes' className="link-button">Recipes</Link>
                 <p>If you don't have account <a href="register">singUp</a> for free!</p>
             </section>
         </>
