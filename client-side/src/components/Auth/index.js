@@ -8,7 +8,6 @@ const Auth = ({ children }) => {
     useEffect(() => {
         services.auth()
             .then(res => {
-                console.log(res, 'res from Auth');
                 setUser(res);
             })
             .catch(err => {

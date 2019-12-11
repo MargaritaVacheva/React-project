@@ -13,10 +13,8 @@ const LoginPage = () => {
     let { from } = location.state || { from: { pathname: "/" } };
 
     const onSubmit = values => {
-        console.log(stateErrors);
         services.login(values)
             .then((data) => {
-                console.log(data, 'data');
                 setUser(data);
                 history.replace(from);
             })

@@ -4,13 +4,10 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
 import { UserContext } from '../App/App';
 
-
-
-
 const EditRecipe = () => {
     const [recipe, setRecipe] = useState(null);
     const history = useHistory();
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const { id } = useParams();
 
     useEffect(() => {
@@ -25,7 +22,6 @@ const EditRecipe = () => {
         recipeServices.put(id, values)
             .then((res) => {
                 setUser(res);
-                console.log(res);
                 history.push("/profile");
             })
             .catch(err => console.log(err));

@@ -1,11 +1,7 @@
-
 const recipeUrl = 'http://localhost:9999/api/recipe';
-// const hostUrl = 'http://localhost:9999/api'
-
 
 const recipeServices = {
     post: (data) => {
-        console.log(data);
         return fetch(`${recipeUrl}`, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -19,7 +15,6 @@ const recipeServices = {
         });
     },
     put: (id, data) => {
-        console.log(data);
         return fetch(`${recipeUrl}/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),

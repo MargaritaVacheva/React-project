@@ -6,7 +6,6 @@ import './styles.css';
 
 const Navigation = (props) => {
   const { user } = useContext(UserContext);
-  console.log(`${user}`, ' - user from Nav');
 
   return (
     <header className="site-header">

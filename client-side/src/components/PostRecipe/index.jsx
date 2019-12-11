@@ -4,7 +4,6 @@ import { Link, useHistory } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
 import { UserContext } from '../App/App';
 
-
 const PostRecipe = () => {
     const history = useHistory();
     const { setUser } = useContext(UserContext);
@@ -13,7 +12,6 @@ const PostRecipe = () => {
         recipeServices.post(values)
             .then((res) => {
                 setUser(res[0]);
-                console.log(res[0]);
                 history.push("/profile");
             })
             .catch(err => console.log(err));

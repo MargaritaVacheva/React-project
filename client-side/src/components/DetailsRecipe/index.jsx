@@ -3,7 +3,6 @@ import { UserContext } from '../App/App';
 import { Link, useParams } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
 
-
 const DetailsRecipe = () => {
     const [recipe, setRecipe] = useState(null);
     const { user } = useContext(UserContext);
@@ -17,9 +16,6 @@ const DetailsRecipe = () => {
             .catch(err => console.log(err));
     }, [])
 
-
-    
-    console.log(recipe);
     return (
         <section className="details-recipe">
             <h3>Recipe details:</h3>

@@ -59,7 +59,7 @@ p, ul, ol {
     width: 100%;
     height: auto;
     z-index: 2;
-    background-color: rgba(247, 230, 199, 0);
+    background: rgba(252, 239, 236, 0.7);
     padding: 0.3rem 1rem;
 }
 
@@ -135,14 +135,14 @@ p, ul, ol {
 
 .header-title {
     display: inline-block;
-    min-width: 50%;
+    min-width: 40%;
     font-family: 'Pacifico', serif;
     font-size: 30px;
     text-align: left;
     color: rgb(216, 28, 94);
     padding: 0.3em 0 0 0.7em ;
     margin-bottom: 0.4em;
-    text-shadow: 5px 2px 5px rgb(248, 232, 227)
+    /* text-shadow: 5px 2px 5px rgb(248, 232, 227); */
 }
 
 .header-title span {
@@ -183,22 +183,23 @@ main p {
 
 .main-section p {
     max-width: 50%; 
-    margin: 0 auto;
+    margin: 1rem auto;
 }
 
-.main-section button {
-    padding: 0.4rem 2rem;
+.main-section a.link-button {
+    padding: 0.4rem 1.6rem;
+    /* margin-bottom: 2em; */
     background: rgb(216, 28, 94);
     color: rgb(247, 230, 199);
     border-color: rgb(216, 28, 94);
     border-radius: 0.5rem;
     font-size: 1.2rem;
+    text-decoration: none;
     box-shadow: 2px 2px 2px rgba(38,16,10,0.8);
-    opacity: 0.8;
     transition: 0.3s;
 }
 
-.main-section button:hover {
+.main-section a.link-buttona.link-button:hover {
     box-shadow: none;
     opacity: 1;
 }

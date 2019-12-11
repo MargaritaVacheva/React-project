@@ -8,8 +8,7 @@ const Logout = () => {
     const { setUser } = useContext(UserContext);
 
     services.logout()
-    .then((res) => {
-        console.log(res);
+    .then(() => {
         setUser(null);
         history.push("/");
     })

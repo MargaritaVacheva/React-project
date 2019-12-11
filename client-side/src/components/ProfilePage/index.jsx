@@ -5,8 +5,6 @@ import { UserContext } from '../App/App';
 const ProfilePage = () => {
     const { user } = useContext(UserContext);
 
-    console.log(user);
-
     return (
         <section className="profile">
             <div className="profile">
