@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../App/App';
 import { Link, useParams } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
+import defaultImage from '../../photos/hannah-pemberton-bXi4eg4jyuU-unsplash.jpg';
 
 const DetailsRecipe = () => {
     const [recipe, setRecipe] = useState(null);
@@ -11,28 +12,28 @@ const DetailsRecipe = () => {
     useEffect(() => {
         recipeServices.load(id)
             .then((recipeDetails) => {
-                setRecipe(recipeDetails[0]);             
+                setRecipe(recipeDetails[0]);
             })
             .catch(err => console.log(err));
     }, [])
 
     return (
         <section className="details-recipe">
-            <h3>Recipe details:</h3>
             {recipe ?
-                <div className="recipe-tile" >
-                    {recipe.image && <img className="recipe-image" src={recipe.image} alt={recipe.title} />}
+                <div className="details-recipe" >
+                    <h2 className="recipe-title">{recipe.title}</h2>
+                    <img className="recipe-image" src={recipe.image || defaultImage} alt={recipe.title} /> 
                     <div>
-                        <span className="recipe-title">{recipe.title}</span>
-                        <span className="recipe-ingredients">{recipe.ingredients}</span>
-                        <span className="recipe-method">{recipe.method}</span>
-                        <span className="recipe-category">{recipe.category}</span>
-                        <div>
-                            <span className="recipe-serves">{recipe.serves}</span>
-                            <span className="recipe-cookingTime">{recipe.cookingTime}</span>
-                            <span className="recipe-prepTime">{recipe.prepTime}</span>
+                        <div className="recipe-stats">
+                            <span className="recipe-serves">Serves: {recipe.serves}</span>
+                            <span className="recipe-cookingTime">Cooking time: {recipe.cookingTime}min</span>
+                            <span className="recipe-prepTime">Prep time: {recipe.prepTime}min</span>
                         </div>
-                        <span className="recipe-author">{recipe.author.username}</span>
+                        <p className="recipe-ingredients"><span>Ingredients: </span>{recipe.ingredients}min</p>
+                        <h4 className="recipe-method">Metod: </h4>
+                        <p className="recipe-method">{recipe.method}</p>
+                        <span className="recipe-category">{recipe.category}</span>
+                        <p className="recipe-author">Published by: {recipe.author.username}</p>
                         {(user._id === recipe.author._id) ?
                             <div>
                                 <Link to={`/editRecipe/${id}`}>Edit</Link>
