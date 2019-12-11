@@ -18,6 +18,20 @@ const recipeServices = {
                     res.json() : Promise.reject(res.status)
         });
     },
+    put: (id, data) => {
+        console.log(data);
+        return fetch(`${recipeUrl}/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => {
+            return res.status === 200 ?
+                    res.json() : Promise.reject(res.status)
+        });
+    },
     load: (id) => {
         return fetch(`${recipeUrl}/${id ? id : ''}`)
         .then(res => {
