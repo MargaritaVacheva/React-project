@@ -1,13 +1,16 @@
 import React, { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
 import { UserContext } from '../App/App';
 import services from '../../services/user-services';
 
 const LoginPage = () => {
     const history = useHistory();
+    const location = useLocation();
     const [stateErrors, setErrors] = useState(null);
-    const { setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+
+    let { from } = location.state || { from: { pathname: "/" } };
 
     const onSubmit = values => {
         console.log(stateErrors);
@@ -15,62 +18,68 @@ const LoginPage = () => {
             .then((data) => {
                 console.log(data, 'data');
                 setUser(data);
-                history.push("/");
+                history.replace(from);
             })
             .catch(err => {
-                setErrors({ err }); 
+                setErrors({ err });
                 console.log(err);
-                console.log(stateErrors);   
+                console.log(stateErrors);
             });
     }
 
     //To Do stateErrors
 
-    return (
-        <div className="form-layout">
-            <h2>Login</h2>
-            <Form
-                onSubmit={onSubmit}
-                validate={handleValidation}
-                render={({ handleSubmit, form, submitting, pristine, values }) => (
-                    <form onSubmit={(ev) => { ev.preventDefault(); handleSubmit(); }}>
-                        <Field name="username">
-                            {({ input, meta }) => (
-                                <div>
-                                    <label>Username</label>
-                                    <input {...input} type="text" placeholder="Username"/>
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                            )}
-                        </Field>
-                        <Field name="password">
-                            {({ input, meta }) => (
-                                <div>
-                                    <label>Password</label>
-                                    <input {...input} type="password" placeholder="Password" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                            )}
-                        </Field>
-                        <div className="buttons">
-                            <Link to="/register">SignUp</Link>
-                            <button type="submit" disabled={submitting}>
-                                Submit
-                    </button>
-                            <button
-                                type="button"
-                                onClick={form.reset}
-                                disabled={submitting || pristine} >
-                                Reset
-                    </button>
-                    {stateErrors && (stateErrors.err === 401) && <span>Wrong username or password</span>}
-                        </div>
-                        <pre>{JSON.stringify(values, 0, 2)}</pre>
-                    </form>
-                )}
-            />
-        </div>
-    );
+
+    if (!user) {
+        return (
+            <div className="form-layout">
+                <h2>Login</h2>
+                <Form
+                    onSubmit={onSubmit}
+                    validate={handleValidation}
+                    render={({ handleSubmit, form, submitting, pristine, values }) => (
+                        <form onSubmit={(ev) => { ev.preventDefault(); handleSubmit(); }}>
+                            <Field name="username">
+                                {({ input, meta }) => (
+                                    <div>
+                                        <label>Username</label>
+                                        <input {...input} type="text" placeholder="Username" />
+                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                    </div>
+                                )}
+                            </Field>
+                            <Field name="password">
+                                {({ input, meta }) => (
+                                    <div>
+                                        <label>Password</label>
+                                        <input {...input} type="password" placeholder="Password" />
+                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                    </div>
+                                )}
+                            </Field>
+                            <div className="buttons">
+                                <Link to="/register">SignUp</Link>
+                                <button type="submit" disabled={submitting}>
+                                    Submit
+                       </button>
+                                <button
+                                    type="button"
+                                    onClick={form.reset}
+                                    disabled={submitting || pristine} >
+                                    Reset
+                       </button>
+                                {stateErrors && (stateErrors.err === 401) && <span>Wrong username or password</span>}
+                            </div>
+                            <pre>{JSON.stringify(values, 0, 2)}</pre>
+                        </form>
+                    )}
+                />
+            </div>
+        )
+    } else {
+        history.replace(from);
+        return null
+    }
 }
 
 export default LoginPage;

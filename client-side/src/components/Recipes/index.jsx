@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import RecipeCard from './RecipeCard';
 import recipeServices from '../../services/recipes-services';
 
 
-const Recipes = ( ) => {
-    const [recipes, setRecipes] = useState("");
+const Recipes = () => {
+    const [recipes, setRecipes] = useState(null);
 
     useEffect(() => {
         recipeServices.load()
@@ -13,15 +14,19 @@ const Recipes = ( ) => {
             .catch(err => console.log(err));
     }, [])
 
-    return ( 
+    return (
         <section className="all-recipes">
-        {recipes ? 
-            <pre>{JSON.stringify(recipes, null, 2)}</pre> :
-            <div>Loading...</div>     
-        }
+            {recipes ?
+                <>
+                    <div>{recipes.map((recipe, i) => <RecipeCard recipe={recipe} key={i} />)}</div>
+                    <pre>{JSON.stringify(recipes, null, 2)}</pre>
+                </>
+                :
+                <div>Loading...</div>
+            }
         </section>
 
-     );
+    );
 }
- 
+
 export default Recipes;

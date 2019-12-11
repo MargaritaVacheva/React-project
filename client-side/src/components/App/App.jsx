@@ -1,10 +1,11 @@
 import React, { useState, useMemo, createContext, useContext } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, useLocation } from "react-router-dom";
 // import Snow from '../Snow';
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
 import Recipes from '../Recipes';
 import PostRecipe from '../PostRecipe';
+import EditRecipe from '../EditRecipe';
 import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
 import Logout from '../Logout';
@@ -44,24 +45,25 @@ const App = () => {
     <div className="App" style={style}>
       <BrowserRouter>
         <UserContext.Provider value={userValue}>
-            <Auth>
-              {/* <Snow isSnowing={isSnowing} /> */}
-              <Navigation snowHandler={snowHandler} />
-              <Main>
-                <Switch>
-                  <Route exact path="/" component={HomePage} />
-                  <Route path="/login" component={LoginPage} />
-                  <Route path="/register" component={RegisterPage} />
-                  <Route path="/contacts" component={ContactPage} />
-                  <RouteAuthWrapper exact path="/recipes" component={Recipes} />
-                  <RouteAuthWrapper path="/postRecipe" component={PostRecipe} />
-                  <RouteAuthWrapper path="/profile" component={ProfilePage} />
-                  <RouteAuthWrapper path="/logout" component={Logout} />
-                  <Route path="*" component={ErrorPage} />
-                </Switch>
-              </Main>
-              <Footer />
-            </Auth>
+          <Auth>
+            {/* <Snow isSnowing={isSnowing} /> */}
+            <Navigation snowHandler={snowHandler} />
+            <Main>
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/register" component={RegisterPage} />
+                <Route path="/contacts" component={ContactPage} />
+                <RouteAuthWrapper exact path="/recipes" component={Recipes} />
+                <RouteAuthWrapper path="/edit-recipe/:id" component={EditRecipe} />
+                <RouteAuthWrapper path="/postRecipe" component={PostRecipe} />
+                <RouteAuthWrapper path="/profile" component={ProfilePage} />
+                <RouteAuthWrapper path="/logout" component={Logout} />
+                <Route path="*" component={ErrorPage} />
+              </Switch>
+            </Main>
+            <Footer />
+          </Auth>
         </UserContext.Provider>
       </BrowserRouter >
     </div >
@@ -71,14 +73,18 @@ const App = () => {
 export default App;
 
 
-const RouteAuthWrapper = ({  component: Component , ...routeProps }) => {
+const RouteAuthWrapper = ({ component: Component, ...routeProps }) => {
   const { user } = useContext(UserContext);
+  let location = useLocation();
   return (
     <Route
       {...routeProps}
-      render={() => (user ? 
-        <Component/> : 
-        <Redirect to='/login' />)
+      render={() => (user ?
+        <Component /> :
+        <Redirect to={{
+          pathname: "/login",
+          state: { from: location }
+        }} />)
       }
     />
   );
