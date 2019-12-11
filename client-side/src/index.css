@@ -203,6 +203,28 @@ main p {
     opacity: 1;
 }
 
+/* recipes */
+
+section.all-recipes {
+    /* border: 1px solid grey; */
+    background-color: white;
+    box-shadow: 10px 10px 20px grey;
+    width: 90%;
+    margin: 1em auto;
+}
+
+section.all-recipes div {
+     display: flex;
+     flex-flow: row wrap;
+}
+
+section.all-recipes div.recipe-tile {
+    border: 1px solid gray;
+    width: calc( (100% / 3) - 20px );
+    padding: 10px;
+    margin: 10px;
+}
+
 /* profile-page */
 
 section.profile  {

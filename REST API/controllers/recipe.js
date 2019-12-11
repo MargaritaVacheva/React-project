@@ -35,10 +35,18 @@ module.exports = {
 
     put: (req, res, next) => {
         const id = req.params.id;
+        const { _id } = req.user;
+
         const { title, ingredients, method, serves, cookingTime, prepTime, category } = req.body;
+        
         models.Recipe.updateOne({ _id: id }, { title, ingredients, method, serves, cookingTime, prepTime, category })
-            .then((updatedRecipe) => res.send(updatedRecipe))
-            .catch(next)
+            .then(() => {
+               return models.User.find({_id}).populate('recipes');              
+            })
+            .then((user) => {
+                res.send(user[0])
+            })
+            .catch(next)       
     },
 
     delete: (req, res, next) => {

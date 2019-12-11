@@ -41,55 +41,76 @@ const PostRecipe = () => {
                         <Field name="ingredients">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Ingredients</label>
-                                    <input {...input} type="text" placeholder="Ingredients" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Ingredients</label>
+                                        <input {...input} type="text" placeholder="Ingredients" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                </>
+                            )}
+                        </Field>
+                        <Field name="category">
+                            {({ input, meta }) => (
+                                <>
+                                    <div>
+                                        <label>Category</label>
+                                        <select {...input} type="text" placeholder="Category">
+                                            <option value="Breakfast">Breakfast</option>
+                                            <option value="Snacks">Snacks</option>
+                                            <option value="Appetisers">Appetisers</option>
+                                            <option value="Soups">Soups</option>
+                                            <option value="Main dishes">Main dishes</option>
+                                            <option value="Salads">Salads</option>
+                                            <option value="Vegetarian">Vegetarian</option>
+                                            <option value="Desserts">Desserts</option>
+                                            <option value="Drinks">Drinks</option>
+                                        </select>
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="method">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Method</label>
-                                    <input {...input} type="text" placeholder="Method" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Method</label>
+                                        <input {...input} type="text" placeholder="Method" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="serves">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Serves</label>
-                                    <input {...input} type="number" placeholder="1" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Serves</label>
+                                        <input {...input} type="number" placeholder="1" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="cookingTime">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Cook time</label>
-                                    <input {...input} type="number" placeholder="0" min="0" max="1440"/>
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Cook time</label>
+                                        <input {...input} type="number" placeholder="0" min="0" max="1440" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="prepTime">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Preparing-time</label>
-                                    <input {...input} type="number" placeholder="5" min="5" max="1440" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Preparing-time</label>
+                                        <input {...input} type="number" placeholder="5" min="5" max="1440" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
@@ -132,12 +153,12 @@ const handleValidation = values => {
 
     if (!values.serves) {
         errors.serves = 'required'
-    } 
+    }
     if (!values.cookingTime) {
         errors.cookingTime = 'required'
-    } 
+    }
     if (!values.prepTime) {
         errors.prepTime = 'required'
-    } 
+    }
     return errors
 }

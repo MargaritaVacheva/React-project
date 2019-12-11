@@ -24,8 +24,8 @@ const EditRecipe = () => {
     const onSubmit = (values) => {
         recipeServices.put(id, values)
             .then((res) => {
-                setUser(res[0]);
-                console.log(res[0]);
+                setUser(res);
+                console.log(res);
                 history.push("/profile");
             })
             .catch(err => console.log(err));
