@@ -2,24 +2,25 @@ import React, { useContext } from 'react';
 import { UserContext } from '../../App/App';
 import { Link } from 'react-router-dom'
 // import PropTypes from 'prop-types';
+import defaultImage from '../../../photos/hannah-pemberton-bXi4eg4jyuU-unsplash.jpg';
 
 const RecipeCard = ({ recipe }) => {
-    const { _id, image, title, method, ingredients, category, serves, cookingTime, prepTime, author } = recipe;
-    
+    let { _id, image, title, method, ingredients, category, serves, cookingTime, prepTime, author } = recipe;
+    image = image || defaultImage;
     return (
         <div className="recipe-tile" >
-            {image && <img className="recipe-image" src={image} alt={title} />}
+            <img className="recipe-image" src={image} alt={title} />
             <div>
-                <span className="recipe-title">{title}</span>
+                <p className="recipe-title">{title}</p>
                 {/* <span className="recipe-ingredients">{ingredients}</span> */}
                 {/* <span className="recipe-method">{method}</span> */}
                 {/* <span className="recipe-category">{category}</span> */}
-                <div>
-                    <span className="recipe-serves">{serves}</span>
-                    <span className="recipe-cookingTime">{cookingTime}</span>
-                    <span className="recipe-prepTime">{prepTime}</span>
+                <div className="recipe-stats">
+                    <span className="recipe-serves">Serves: {serves}</span>
+                    <span className="recipe-cookingTime">Cookig: {cookingTime}min</span>
+                    <span className="recipe-prepTime">Prep: {prepTime}min</span>
                 </div>
-                <span className="recipe-author">{author.username}</span>
+                <span className="recipe-author">Published by: {author.username}</span>
                 <Link to={`/details/${_id}`}>Details</Link>
             </div>
         </div>

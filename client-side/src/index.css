@@ -188,7 +188,6 @@ main p {
 
 .main-section a.link-button {
     padding: 0.4rem 1.6rem;
-    /* margin-bottom: 2em; */
     background: rgb(216, 28, 94);
     color: rgb(247, 230, 199);
     border-color: rgb(216, 28, 94);
@@ -212,18 +211,58 @@ section.all-recipes {
     box-shadow: 10px 10px 20px grey;
     width: 90%;
     margin: 1em auto;
+    padding: 1em 2em;
 }
 
 section.all-recipes div {
-     display: flex;
-     flex-flow: row wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-section.all-recipes div.recipe-tile {
+div.recipe-tile {
+    flex: 0 1 30%;
     border: 1px solid gray;
-    width: calc( (100% / 3) - 20px );
-    padding: 10px;
-    margin: 10px;
+    width: calc( (100% / 3) - 2em );
+    height: 30em;
+    padding: 0.8em;
+    margin: 1em;
+}
+
+div.recipe-tile img {
+    width: 90%;
+    height: 70%;
+    margin: 0.4em auto;
+}
+
+div.recipe-tile div {
+    flex-flow: column;
+    margin: 0 auto;
+    align-content: center;
+    width: 90%;
+}
+
+div.recipe-tile .recipe-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0 auto;
+    padding-bottom: 0;
+}
+
+div.recipe-tile div .recipe-stats {
+    flex-flow: row;
+}
+
+div.recipe-tile div a {
+    padding: 0.4rem 1.6rem;
+    background: rgb(216, 28, 94);
+    color: rgb(247, 230, 199);
+    border-color: rgb(216, 28, 94);
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    box-shadow: 2px 2px 2px rgba(38,16,10,0.8);
+    transition: 0.3s;
 }
 
 /* profile-page */
@@ -287,89 +326,6 @@ section.error-section {
     font-weight: bold;
 }
 
-
-/* 
-
-.site-info {
-    padding: 2.5rem 0;
-    background: #FF7F50;
-    color: #FFF;
-}
-
-.site-info p {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.site-info button {
-    margin: 0 auto;
-    padding: 0.6rem 0.8rem;
-  
-    background: #FFF;
-    color: #FF7F50;
-    border-radius: 0.5rem;
-    border: 2px solid #FFF;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.site-info button:hover {
-    background: transparent;
-    color: #FFF;
-}
-
-.site-works {
-    padding: 2.5rem 0; 
-    background: #FFF;
-}
-
-.site-works ul li {
-    display: inline-block;
-    width: 21%;
-    min-width: 105px;
-    height: auto;
-    vertical-align: top;
-}
-
-.site-works ul li:not(:last-child) {
-    margin-right: 2em;
-}
-
-.site-works ul li img{
-    padding-bottom: 0.5rem;
-}
-
-.gallery {
-    padding: 2.5rem 2.5rem 0 2.5rem;
-    background: rgba(255, 127, 80, 0.2);
-}
-
-.gallery ul {
-    margin: 0 auto;
-    padding-left: 1rem;
-    padding-bottom: 0;
-}
-
-.gallery ul li {
-    display: inline-block;
-    max-width: 20rem;
-    height: auto;
-    vertical-align: middle;
-    margin-bottom: 2.5rem;
-    padding: 1rem; 
-    background: #FFF;
-    border: 0.5rem solid black;
-}
-
-.gallery ul li:not(:nth-child(3n+3)) {
-   margin-right: 2.5rem;
-}
-
-.gallery ul li img {
-    max-width: 100%;
-    height: auto; 
-} */
 
 /* ContactPage */
 .contact-map {
