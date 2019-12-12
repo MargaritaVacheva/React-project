@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App/App';
+import RecipeList from '../Recipes/RecipeList';
+
 import defaultImage from '../../photos/chuttersnap-lCf-8i0pKYc-unsplash.jpg';
 
 const ProfilePage = () => {
@@ -23,8 +25,7 @@ const ProfilePage = () => {
             <div>
                 <Link to="/postRecipe">Add new recipe</Link>
             </div>
-            <label>Recipes</label>
-            <pre>{JSON.stringify(user.recipes, null, 2)}</pre>
+            <RecipeList title={"Published by you"} recipes={user.recipes} />
         </section>
     );
 }
