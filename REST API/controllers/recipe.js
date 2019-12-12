@@ -23,7 +23,7 @@ module.exports = {
         models.Recipe.create({ title, ingredients, method, serves, cookingTime, prepTime, category, author: _id })
             .then((createdRecipe) => {
                 return Promise.all([
-                    models.User.updateOne({ _id }, { $push: { recipes: createdRecipe } }, { new: true }).populate('recipes'),
+                    models.User.findOneAndUpdate({ _id }, { $push: { recipes: createdRecipe } }, { new: true }).populate('recipes'),
                     models.Recipe.findOne({ _id: createdRecipe._id }).populate('author')
                 ]);
             })

@@ -32,7 +32,7 @@ const DetailsRecipe = () => {
                         <p className="recipe-ingredients"><span>Ingredients: </span>{recipe.ingredients}min</p>
                         <h4 className="recipe-method">Metod: </h4>
                         <p className="recipe-method">{recipe.method}</p>
-                        <span className="recipe-category">{recipe.category}</span>
+                        <p className="recipe-category">{recipe.category}</p>
                         <p className="recipe-author">Published by: {recipe.author.username}</p>
                         {(user._id === recipe.author._id) ?
                             <div>

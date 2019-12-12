@@ -32,7 +32,7 @@ const EditRecipe = () => {
             <h2>Edit recipe</h2>
             {recipe ?
                 <Form
-                    initialValues={{...recipe}}
+                    initialValues={{ ...recipe }}
                     onSubmit={onSubmit}
                     validate={handleValidation}
                     render={({ handleSubmit, form, submitting, pristine, values }) => (
@@ -54,6 +54,27 @@ const EditRecipe = () => {
                                         <div>
                                             <label>Ingredients</label>
                                             <input {...input} type="text" placeholder="Ingredients" />
+                                        </div>
+                                        <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    </>
+                                )}
+                            </Field>
+                            <Field name="category">
+                                {({ input, meta }) => (
+                                    <>
+                                        <div>
+                                            <label>Category</label>
+                                            <select {...input} type="text" placeholder="Category">
+                                                <option value="Breakfast">Breakfast</option>
+                                                <option value="Snacks">Snacks</option>
+                                                <option value="Appetisers">Appetisers</option>
+                                                <option value="Soups">Soups</option>
+                                                <option value="Main dishes">Main dishes</option>
+                                                <option value="Salads">Salads</option>
+                                                <option value="Vegetarian">Vegetarian</option>
+                                                <option value="Desserts">Desserts</option>
+                                                <option value="Drinks">Drinks</option>
+                                            </select>
                                         </div>
                                         <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                     </>

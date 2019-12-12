@@ -11,6 +11,7 @@ const PostRecipe = () => {
     const onSubmit = (values) => {
         recipeServices.post(values)
             .then((res) => {
+                console.log(res[0])
                 setUser(res[0]);
                 history.push("/profile");
             })
@@ -53,6 +54,7 @@ const PostRecipe = () => {
                                     <div>
                                         <label>Category</label>
                                         <select {...input} type="text" placeholder="Category">
+                                            <option value="Select">Select</option>
                                             <option value="Breakfast">Breakfast</option>
                                             <option value="Snacks">Snacks</option>
                                             <option value="Appetisers">Appetisers</option>
@@ -113,7 +115,6 @@ const PostRecipe = () => {
                             )}
                         </Field>
                         <div className="buttons">
-                            <Link to="/login">SignIn</Link>
                             <button type="submit" disabled={submitting}>
                                 Submit
                             </button>
@@ -144,6 +145,10 @@ const handleValidation = values => {
     if (!values.method) {
         errors.method = 'required'
     } else if (values.method.length < 100) { errors.method = 'method should be at least 100 chars' }
+
+    if (!values.category) {
+        errors.category = 'required'
+    } else if (values.category === "Select") { errors.category = 'required' }
 
     if (!values.ingredients) {
         errors.ingredients = 'required'

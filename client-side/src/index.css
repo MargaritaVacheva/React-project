@@ -325,10 +325,10 @@ section.details-recipe img {
 /* profile-page */
 
 section.profile  {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.6);
     width: 80%;
     height: auto;
-    margin: 0 auto;
+    margin: 1em auto;
     padding: 1em;
 }
 
