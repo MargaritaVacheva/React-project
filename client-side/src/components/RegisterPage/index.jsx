@@ -12,11 +12,11 @@ const RegisterPage = () => {
     const onSubmit = (values) => {
         services.register(values)
             .then(() => history.push("/login"))
-            .catch(err =>{
+            .catch(err => {
                 setErrors({ err });
                 console.log(err);
                 console.log(stateErrors);
-            } );
+            });
     }
 
     return (
@@ -41,40 +41,40 @@ const RegisterPage = () => {
                         <Field name="email">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Email</label>
-                                    <input {...input} type="email" placeholder="E-mail" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Email</label>
+                                        <input {...input} type="email" placeholder="E-mail" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="password">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Password</label>
-                                    <input {...input} type="password" placeholder="Password" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Password</label>
+                                        <input {...input} type="password" placeholder="Password" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <Field name="confirm">
                             {({ input, meta }) => (
                                 <>
-                                <div>
-                                    <label>Confirm</label>
-                                    <input {...input} type="password" placeholder="Confirm" />
-                                </div>
-                                <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
+                                    <div>
+                                        <label>Confirm</label>
+                                        <input {...input} type="password" placeholder="Confirm" />
+                                    </div>
+                                    <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
                             )}
                         </Field>
                         <div className="buttons">
                             <Link to="/login">SignIn</Link>
                             <button type="submit" disabled={submitting}>
-                                Submit
+                                Register
                             </button>
                             <button
                                 type="button"
@@ -100,23 +100,23 @@ const handleValidation = values => {
     if (!values.username) {
         errors.username = 'required';
     } else if (values.username.length < 4) {
-         errors.username = 'username should be at least 4 chars'; 
-        }
+        errors.username = 'username should be at least 4 chars';
+    }
 
     if (!values.password) {
         errors.password = 'required';
-    } else if (values.username.length < 6) { 
-        errors.username = 'username should be at least 6 chars'; 
+    } else if (values.username.length < 6) {
+        errors.username = 'username should be at least 6 chars';
     }
 
     if (!values.email) {
         errors.email = 'required';
-    } 
+    }
 
     if (!values.confirm) {
         errors.confirm = 'required';
-    } else if (values.confirm !== values.password) { 
-        errors.confirm = 'password must match'; 
+    } else if (values.confirm !== values.password) {
+        errors.confirm = 'password must match';
     }
 
     return errors

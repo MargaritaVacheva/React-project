@@ -56,9 +56,9 @@ const LoginPage = () => {
                                 )}
                             </Field>
                             <div className="buttons">
-                                <Link to="/register">SignUp</Link>
+                                <Link to="/register">Sign Up</Link>
                                 <button type="submit" disabled={submitting}>
-                                    Submit
+                                    Login
                        </button>
                                 <button
                                     type="button"

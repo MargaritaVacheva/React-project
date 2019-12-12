@@ -116,7 +116,7 @@ const PostRecipe = () => {
                         </Field>
                         <div className="buttons">
                             <button type="submit" disabled={submitting}>
-                                Submit
+                                Add
                             </button>
                             <button
                                 type="button"

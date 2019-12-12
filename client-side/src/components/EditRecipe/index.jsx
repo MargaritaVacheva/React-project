@@ -126,7 +126,7 @@ const EditRecipe = () => {
                             </Field>
                             <div className="buttons">
                                 <button type="submit" disabled={submitting}>
-                                    Submit
+                                    Edit
                                 </button>
                                 <button
                                     type="button"

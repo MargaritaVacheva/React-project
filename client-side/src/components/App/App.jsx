@@ -1,6 +1,6 @@
 import React, { useState, useMemo, createContext, useContext } from 'react';
 import { BrowserRouter, Route, Switch, Redirect, useLocation } from "react-router-dom";
-// import Snow from '../Snow';
+import Snow from '../Snow';
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
 import Recipes from '../Recipes';
@@ -13,7 +13,6 @@ import Logout from '../Logout';
 import ProfilePage from '../ProfilePage';
 import ContactPage from '../ContactPage';
 import ErrorPage from '../ErrorPage';
-// import Aside from '../Aside';
 import Main from '../Main';
 import Footer from '../Footer';
 import Auth from '../Auth';
@@ -38,16 +37,15 @@ const App = () => {
   }
 
   let style = imageUrl ?
-    { backgroundImage: `url(${imageUrl})` } :
+    { backgroundImage: `linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2)), url(${imageUrl})` } :
     { background }
-
 
   return (
     <div className="App" style={style}>
       <BrowserRouter>
         <UserContext.Provider value={userValue}>
           <Auth>
-            {/* <Snow isSnowing={isSnowing} /> */}
+            <Snow isSnowing={isSnowing} />
             <Navigation snowHandler={snowHandler} />
             <Main>
               <Switch>
