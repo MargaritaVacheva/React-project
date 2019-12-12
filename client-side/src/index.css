@@ -77,12 +77,21 @@ p, ul, ol {
     font-weight: bold;
 }
 
+.site-header nav .profile-image {
+    background-color: wheat;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin-top: 1em ; 
+}
+
 .site-header nav ul {
     padding: 0;
     display: inline;
     background-color: rgb(216, 28, 94);
     padding: 1em;
-    margin-left: 6em;
+    margin-left: 5em;
+    margin-right: 1em;
 }
 
 .site-header ul li {
@@ -332,13 +341,14 @@ section.profile  {
     padding: 1em;
 }
 
-div.profile {
+div.profile img {
     background-color: wheat;
     width: 10em;
     height: 10em;
     border-radius: 50%;
     margin: 1em auto;   
 }
+
 .profile div {
     display: flex;
     flex-flow: row nowrap;

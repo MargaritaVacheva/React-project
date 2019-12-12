@@ -125,10 +125,9 @@ const EditRecipe = () => {
                                 )}
                             </Field>
                             <div className="buttons">
-                                <Link to="/login">SignIn</Link>
                                 <button type="submit" disabled={submitting}>
                                     Submit
-                            </button>
+                                </button>
                                 <button
                                     type="button"
                                     onClick={form.reset}

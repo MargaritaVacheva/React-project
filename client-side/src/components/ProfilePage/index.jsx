@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App/App';
+import defaultImage from '../../photos/chuttersnap-lCf-8i0pKYc-unsplash.jpg';
 
 const ProfilePage = () => {
     const { user } = useContext(UserContext);
@@ -8,7 +9,7 @@ const ProfilePage = () => {
     return (
         <section className="profile">
             <div className="profile">
-                <img src={user.imageUrl} alt="profile"></img>
+                <img src={user.imageUrl || defaultImage} alt="profile"></img>
             </div>
             <div>
                 <label>Name:</label>

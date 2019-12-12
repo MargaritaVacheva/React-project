@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import DaysToCmas from '../DaysToCmas';
-import { UserContext } from '../App/App'
+import { UserContext } from '../App/App';
+import defaultImage from '../../photos/chuttersnap-lCf-8i0pKYc-unsplash.jpg';
 import './styles.css';
 
 const Navigation = (props) => {
@@ -32,10 +33,17 @@ const Navigation = (props) => {
         </ul>
         {
           user ?
-            <span>Welcome, {user.username}!</span> :
+          <span className="profile-link">            
+            <Link to='/profile'>
+              <img src={user.imageUrl || defaultImage}
+                alt="profile"
+                className="profile-image"></img>
+              <span>Welcome, {user.username}!</span>
+            </Link>
+            </span>
+            :
             ""
         }
-
       </nav>
     </header>
   );
