@@ -51,8 +51,15 @@ module.exports = {
 
     delete: (req, res, next) => {
         const id = req.params.id;
+        const { _id } = req.user;
+
         models.Recipe.deleteOne({ _id: id })
-            .then((removedRecipe) => res.send(removedRecipe))
+            .then(() => {
+                return models.User.find({_id}).populate('recipes');
+            })
+            .then((user) => {
+                res.send(user[0])
+            })
             .catch(next)
     }
 };

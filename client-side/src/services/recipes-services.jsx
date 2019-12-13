@@ -27,6 +27,18 @@ const recipeServices = {
                     res.json() : Promise.reject(res.status)
         });
     },
+    delete: (id) => {
+        return fetch(`${recipeUrl}/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => {
+            return res.status === 200 ?
+                    res.json() : Promise.reject(res.status)
+        });
+    },
     load: (id) => {
         return fetch(`${recipeUrl}/${id ? id : ''}`)
         .then(res => {

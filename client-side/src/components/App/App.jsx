@@ -6,6 +6,7 @@ import HomePage from '../HomePage';
 import Recipes from '../Recipes';
 import PostRecipe from '../PostRecipe';
 import EditRecipe from '../EditRecipe';
+import DeleteRecipe from '../DeleteRecipe';
 import DetailsRecipe from '../DetailsRecipe';
 import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
@@ -56,6 +57,7 @@ const App = () => {
                 <RouteAuthWrapper exact path="/recipes" component={Recipes} />
                 <RouteAuthWrapper path="/details/:id" component={DetailsRecipe} />
                 <RouteAuthWrapper path="/editRecipe/:id" component={EditRecipe} />
+                <RouteAuthWrapper path="/deleteRecipe/:id" component={DeleteRecipe} />
                 <RouteAuthWrapper path="/postRecipe" component={PostRecipe} />
                 <RouteAuthWrapper path="/profile" component={ProfilePage} />
                 <RouteAuthWrapper path="/logout" component={Logout} />

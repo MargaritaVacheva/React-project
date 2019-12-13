@@ -1,17 +1,19 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App/App';
 import defaultImage from '../../../photos/hannah-pemberton-bXi4eg4jyuU-unsplash.jpg';
 
 const RecipeCard = ({ recipe }) => {
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+    let location = useLocation();
 
     let { _id, image, title, serves, cookingTime, prepTime, author } = recipe;
     image = image || defaultImage;
 
     console.log(user)
     console.log(author)
-    
+
+
     return (
         <div className="recipe-tile" >
             <img className="recipe-image" src={image} alt={title} />
@@ -26,9 +28,13 @@ const RecipeCard = ({ recipe }) => {
                 {(user._id === author._id) || (user._id === author) ?
                     <div className="buttons">
                         <Link to={`/details/${_id}`}>Details</Link>
-                        <Link to={`/editRecipe/${_id}`}>Edit</Link>
+                        <Link to={{
+                            pathname: `/editRecipe/${_id}`,
+                            state: { from: location }
+                        }}>Edit</Link>
+                        <Link to={`/deleteRecipe/${_id}`}>Delete</Link>
                     </div>
-                    : 
+                    :
                     <Link id="recipe-details-btn" to={`/details/${_id}`}>Details</Link>
                 }
             </div>
