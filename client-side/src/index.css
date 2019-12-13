@@ -280,20 +280,22 @@ div.recipe-tile .recipe-title {
 div.recipe-tile div .recipe-stats,
 div.recipe-tile div .buttons {
     flex-flow: row;
+    justify-content: space-evenly;
 }
 
 div.recipe-tile div a,
 div.details-recipe div div a {
-    padding: 0.4rem 1.6rem;
+    font-size: 0.8em;
+    padding: 0.4rem 0.2em;
     background: rgb(216, 28, 94);
     color: rgb(247, 230, 199);
     border-color: rgb(216, 28, 94);
     border-radius: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1em;
     text-decoration: none;
     box-shadow: 2px 2px 2px rgba(38,16,10,0.8);
     transition: 0.3s;
-    width: 45%;
+    width: 30%;
 }
 
 #recipe-details-btn {
@@ -418,6 +420,15 @@ section.error-section {
     text-shadow: 2px 2px 5px grey;
     text-align: center;
     /* text-align: center; */
+}
+
+#map-loader {
+    position: relative;
+}
+
+#map-loader img {
+    position: absolute;
+    margin: 10em 18em;
 }
 
 .contact-map iframe{
