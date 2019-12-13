@@ -86,7 +86,7 @@ const PostRecipe = () => {
                                 <>
                                     <div>
                                         <label>Serves</label>
-                                        <input {...input} type="number" placeholder="1" />
+                                        <input {...input} type="number" placeholder="1" min="1" max="140"/>
                                     </div>
                                     <p>* {meta.error && meta.touched && <span>{meta.error}</span>}</p>
                                 </>
@@ -156,12 +156,14 @@ const handleValidation = values => {
 
     if (!values.serves) {
         errors.serves = 'required'
-    }
+    }  else if (+values.serves < 1) { errors.serves = 'serves should be positive number' }
+
     if (!values.cookingTime) {
         errors.cookingTime = 'required'
-    }
+    } else if (+values.cookingTime < 0) { errors.cookingTime = 'cookingTime should be positive number' }
+
     if (!values.prepTime) {
         errors.prepTime = 'required'
-    }
+    } else if (+values.prepTime < 0) { errors.prepTime = 'prepTime should be positive number' }
     return errors
 }
