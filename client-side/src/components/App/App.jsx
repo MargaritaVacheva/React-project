@@ -1,5 +1,7 @@
 import React, { useState, useMemo, createContext, useContext } from 'react';
 import { BrowserRouter, Route, Switch, Redirect, useLocation } from "react-router-dom";
+import ErrorBoundary from '../ErrorBoundary';
+import Auth from '../Auth';
 import Snow from '../Snow';
 import Navigation from '../Navigation';
 import HomePage from '../HomePage';
@@ -16,7 +18,6 @@ import ContactPage from '../ContactPage';
 import ErrorPage from '../ErrorPage';
 import Main from '../Main';
 import Footer from '../Footer';
-import Auth from '../Auth';
 import './App.css';
 import imageDefault from '../../photos/joanna-kosinska-llLttk4TgT4-unsplash.jpg';
 
@@ -43,31 +44,33 @@ const App = () => {
 
   return (
     <div className="App" style={style}>
-      <BrowserRouter>
-        <UserContext.Provider value={userValue}>
-          <Auth>
-            <Snow isSnowing={isSnowing} />
-            <Navigation snowHandler={snowHandler} />
-            <Main>
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/login" component={LoginPage} />
-                <Route path="/register" component={RegisterPage} />
-                <Route path="/contacts" component={ContactPage} />
-                <RouteAuthWrapper exact path="/recipes" component={Recipes} />
-                <RouteAuthWrapper path="/details/:id" component={DetailsRecipe} />
-                <RouteAuthWrapper path="/editRecipe/:id" component={EditRecipe} />
-                <RouteAuthWrapper path="/deleteRecipe/:id" component={DeleteRecipe} />
-                <RouteAuthWrapper path="/postRecipe" component={PostRecipe} />
-                <RouteAuthWrapper path="/profile" component={ProfilePage} />
-                <RouteAuthWrapper path="/logout" component={Logout} />
-                <Route path="*" component={ErrorPage} />
-              </Switch>
-            </Main>
-            <Footer />
-          </Auth>
-        </UserContext.Provider>
-      </BrowserRouter >
+      <ErrorBoundary>
+        <BrowserRouter>
+          <UserContext.Provider value={userValue}>
+            <Auth>
+              <Snow isSnowing={isSnowing} />
+              <Navigation snowHandler={snowHandler} />
+              <Main>
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                  <Route path="/login" component={LoginPage} />
+                  <Route path="/register" component={RegisterPage} />
+                  <Route path="/contacts" component={ContactPage} />
+                  <RouteAuthWrapper exact path="/recipes" component={Recipes} />
+                  <RouteAuthWrapper path="/details/:id" component={DetailsRecipe} />
+                  <RouteAuthWrapper path="/editRecipe/:id" component={EditRecipe} />
+                  <RouteAuthWrapper path="/deleteRecipe/:id" component={DeleteRecipe} />
+                  <RouteAuthWrapper path="/postRecipe" component={PostRecipe} />
+                  <RouteAuthWrapper path="/profile" component={ProfilePage} />
+                  <RouteAuthWrapper path="/logout" component={Logout} />
+                  <Route path="*" component={ErrorPage} />
+                </Switch>
+              </Main>
+              <Footer />
+            </Auth>
+          </UserContext.Provider>
+        </BrowserRouter >
+      </ErrorBoundary>
     </div >
   );
 }
