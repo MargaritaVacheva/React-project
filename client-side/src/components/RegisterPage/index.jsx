@@ -94,6 +94,8 @@ const RegisterPage = () => {
 export default RegisterPage;
 
 const handleValidation = values => {
+
+    const emailPattern = /^[A-Za-z0-9_.]+@[A-Za-z0-9_.]{2,}\.[A-Za-z]{2,4}$/gm;
     const errors = {}
     if (!values.username) {
         errors.username = 'required';
@@ -103,12 +105,14 @@ const handleValidation = values => {
 
     if (!values.password) {
         errors.password = 'required';
-    } else if (values.username.length < 6) {
-        errors.username = 'username should be at least 6 chars';
+    } else if (values.password.length < 6) {
+        errors.password = 'password should be at least 6 chars';
     }
 
     if (!values.email) {
         errors.email = 'required';
+    } else if (!values.email.match(emailPattern)) {
+        errors.email = 'not a valid email';
     }
 
     if (!values.confirm) {

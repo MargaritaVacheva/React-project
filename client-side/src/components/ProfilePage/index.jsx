@@ -24,6 +24,7 @@ const ProfilePage = () => {
             <p>Share your knowledge.</p>
             <div>
                 <Link to="/postRecipe">Add new recipe</Link>
+                <Link to="/editProfie">Edit Profile</Link>
             </div>
             <RecipeList title={"Published by you"} recipes={user.recipes} />
         </section>

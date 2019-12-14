@@ -14,6 +14,7 @@ import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
 import Logout from '../Logout';
 import ProfilePage from '../ProfilePage';
+import EditProfile from '../EditProfile';
 import ContactPage from '../ContactPage';
 import ErrorPage from '../ErrorPage';
 import Main from '../Main';
@@ -62,6 +63,7 @@ const App = () => {
                   <RouteAuthWrapper path="/deleteRecipe/:id" component={DeleteRecipe} />
                   <RouteAuthWrapper path="/postRecipe" component={PostRecipe} />
                   <RouteAuthWrapper path="/profile" component={ProfilePage} />
+                  <RouteAuthWrapper path="/editProfie" component={EditProfile} />
                   <RouteAuthWrapper path="/logout" component={Logout} />
                   <Route path="*" component={ErrorPage} />
                 </Switch>

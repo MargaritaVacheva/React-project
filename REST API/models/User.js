@@ -51,4 +51,23 @@ userSchema.pre('save', function (next) {
     next();
 });
 
+// userSchema.pre("update", function(next) {
+//     const password = this.getUpdate().$set.password;
+//     if (!password) {
+//         return next();
+//     }
+//     try {
+//         bcrypt.genSalt(saltRounds, (err, salt) => {
+//             bcrypt.hash(this.password, salt, (err, hash) => {
+//                 if (err) { next(err); return }
+//                 this.password = hash;
+//                 next();
+//             });
+//         });
+//         return;
+//     } catch (error) {
+//         return next(error);
+//     }
+// });
+
 module.exports = new Model('User', userSchema);

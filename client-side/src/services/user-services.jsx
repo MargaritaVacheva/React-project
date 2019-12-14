@@ -35,6 +35,21 @@ const userServices = {
                     res.text() : res.text().then(text => Promise.reject(text))
         })
     },
+    put: (id, data) => {
+        console.log(id, data)
+        return fetch(`${userUrl}/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => {
+            console.log(res);
+            return res.status === 200 ?
+                    res.json() : Promise.reject(res.status)
+        })
+    },
     load: (id) => {
         return fetch(`${userUrl}/${id ? id : ''}`)
         .then(res => res.json());

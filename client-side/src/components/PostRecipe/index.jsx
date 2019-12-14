@@ -11,7 +11,7 @@ const PostRecipe = () => {
     const onSubmit = (values) => {
         recipeServices.post(values)
             .then((res) => {
-                console.log(res[0])
+                // console.log(res[0])
                 setUser(res[0]);
                 history.push("/profile");
             })

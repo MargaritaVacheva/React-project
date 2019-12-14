@@ -60,7 +60,7 @@ p, ul, ol {
     height: auto;
     z-index: 2;
     background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0));
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 0.6rem;
 }
 
 .site-header a {
@@ -90,7 +90,7 @@ p, ul, ol {
     display: inline;
     background-color: rgb(216, 28, 94);
     padding: 1em;
-    margin-left: 5em;
+    margin-left: 3em;
     margin-right: 1em;
 }
 
