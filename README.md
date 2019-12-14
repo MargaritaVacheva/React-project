@@ -3,7 +3,7 @@
 ## npm install
 To start run npm install for both client-side and REST API.
 
-##bcrypt
+## bcrypt
 If you hit a problem with bcrypt while installing dependencies, try to install bcrypt@3.0.6
 
 React based project with MERN stack.
