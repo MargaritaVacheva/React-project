@@ -45,12 +45,17 @@ const App = () => {
 
   return (
     <div className="App" style={style}>
-      <ErrorBoundary>
-        <BrowserRouter>
-          <UserContext.Provider value={userValue}>
-            <Auth>
+
+      <BrowserRouter>
+        <UserContext.Provider value={userValue}>
+          <Auth>
+            <ErrorBoundary>
               <Snow isSnowing={isSnowing} />
+            </ErrorBoundary>
+            <ErrorBoundary>
               <Navigation snowHandler={snowHandler} />
+            </ErrorBoundary>
+            <ErrorBoundary>
               <Main>
                 <Switch>
                   <Route exact path="/" component={HomePage} />
@@ -68,11 +73,13 @@ const App = () => {
                   <Route path="*" component={ErrorPage} />
                 </Switch>
               </Main>
+            </ErrorBoundary>
+            <ErrorBoundary>
               <Footer />
-            </Auth>
-          </UserContext.Provider>
-        </BrowserRouter >
-      </ErrorBoundary>
+            </ErrorBoundary>
+          </Auth>
+        </UserContext.Provider>
+      </BrowserRouter >
     </div >
   );
 }
