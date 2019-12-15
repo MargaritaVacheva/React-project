@@ -11,7 +11,10 @@ const userServices = {
             headers: {
                 'Content-type': 'application/json'
             }
-        }).then(res => res.json())
+        }).then(res => {
+            return res.status === 200 ?
+                    res.json() : Promise.reject(res.status)
+        })
     },
     login: (data) => {
         return fetch(`${userUrl}/login`, {

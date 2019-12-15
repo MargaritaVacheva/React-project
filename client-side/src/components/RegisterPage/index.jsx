@@ -12,7 +12,7 @@ const RegisterPage = () => {
     const onSubmit = (values) => {
         services.register(values)
             .then(() => history.push("/login"))
-            .catch(err => {
+            .catch((err) => {
                 setErrors({ err });
                 console.log(err);
                 console.log(stateErrors);
@@ -82,7 +82,7 @@ const RegisterPage = () => {
                                 disabled={submitting || pristine} >
                                 Reset
                             </button>
-                            {stateErrors && (stateErrors.err === 401) && <span>Wrong username or password</span>}
+                            {stateErrors && (stateErrors.err === 500) && <span>Username may already been taken</span>}
                         </div>
                     </form>
                 )}
