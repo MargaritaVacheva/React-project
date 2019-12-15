@@ -4,7 +4,7 @@ import { UserContext } from '../../App/App';
 import DeleteRecipe from '../../DeleteRecipe';
 import defaultImage from '../../../photos/hannah-pemberton-bXi4eg4jyuU-unsplash.jpg';
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, setIsRecipesUpdate }) => {
     const { user } = useContext(UserContext);
     let location = useLocation();
     const [askingDelete, setAskingDelete] = useState(false);
@@ -30,7 +30,7 @@ const RecipeCard = ({ recipe }) => {
                                 <span className="recipe-cookingTime">Cookig: {cookingTime}min</span>
                                 <span className="recipe-prepTime">Prep: {prepTime}min</span>
                             </div>
-                            <span className="recipe-author">Published by: {author.username}</span>
+                            {/* <span className="recipe-author">Published by: {author.username}</span> */}
                             {(user._id === author._id) || (user._id === author) ?
                                 <div className="buttons">
                                     <Link to={`/details/${_id}`}>Details</Link>
@@ -49,7 +49,8 @@ const RecipeCard = ({ recipe }) => {
                     <DeleteRecipe title={title} id={_id}
                          from={location} 
                          setAskingDelete={setAskingDelete} 
-                         askingDelete={askingDelete}/>
+                         askingDelete={askingDelete}
+                         setIsRecipesUpdate={setIsRecipesUpdate}/>
             }
         </div>
     );

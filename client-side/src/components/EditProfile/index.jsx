@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { useHistory } from 'react-router-dom';
 import userServices from '../../services/user-services';
@@ -7,15 +7,17 @@ import { UserContext } from '../App/App';
 const EditProfile = () => {
     const history = useHistory();
     const { user, setUser } = useContext(UserContext);
+    const [stateErrors, setErrors] = useState(null);
 
     const onSubmit = (values) => {
-        console.log(values);
         userServices.put(user._id, values)
             .then((modifiedUser) => {              
                 setUser(modifiedUser);
                 history.push("/profile");
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+                setErrors({ err });
+            });
     }
 
     return (
@@ -60,6 +62,7 @@ const EditProfile = () => {
                                     disabled={submitting || pristine} >
                                     Reset
                             </button>
+                            {stateErrors && (stateErrors.err === 500) && <span>Username may already been taken</span>}
                             </div>
                         </form>
                     )}

@@ -1,18 +1,17 @@
 import React, { useContext } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
 import { UserContext } from '../App/App';
 
-const DeleteRecipe = ({ title, id, from, setAskingDelete, askingDelete }) => {
+const DeleteRecipe = ({ title, id, from, setAskingDelete, askingDelete, setIsRecipesUpdate }) => {
     const { setUser } = useContext(UserContext);
-    const history = useHistory();
 
     const handleDelete = () => {
         recipeServices.delete(id)
             .then((res) => {
                 console.log(res)
                 setUser(res);
-                document.location.href = from.pathname;
+                setIsRecipesUpdate(true);
+                // document.location.href = from.pathname;
             })
             .catch(err => console.log(err));
     }

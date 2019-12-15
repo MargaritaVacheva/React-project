@@ -13,10 +13,7 @@ const RegisterPage = () => {
         services.register(values)
             .then(() => history.push("/login"))
             .catch((err) => {
-                setErrors({ err });
-                console.log(err);
-                console.log(stateErrors);
-            });
+                setErrors({ err });});
     }
 
     return (

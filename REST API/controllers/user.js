@@ -72,7 +72,7 @@ module.exports = {
 
         console.log(id)
         console.log(username, email);
-        models.User.findOneAndUpdate({ _id: id }, { username, email }, { new: true })
+        models.User.findOneAndUpdate({ _id: id }, { username, email }, { new: true }).populate('recipes')
             .then((updatedUser) => {
 
                 res.send(updatedUser);

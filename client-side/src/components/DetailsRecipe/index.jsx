@@ -32,10 +32,10 @@ const DetailsRecipe = () => {
                         <p className="recipe-ingredients"><span>Ingredients: </span>{recipe.ingredients}min</p>
                         <h4 className="recipe-method">Metod: </h4>
                         <p className="recipe-method">{recipe.method}</p>
-                        <p className="recipe-category">{recipe.category}</p>
-                        <p className="recipe-author">Published by: {recipe.author.username}</p>
+                        <p className="recipe-category"><span>Category: </span>{recipe.category}</p>
+                        <p className="recipe-author"><span>Published by:</span> {recipe.author.username}</p>
                         {(user._id === recipe.author._id) ?
-                            <div>
+                            <div className="button-edit">
                                 <Link to={`/editRecipe/${id}`}>Edit</Link>
                             </div> : ""
                         }

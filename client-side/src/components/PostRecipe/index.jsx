@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { useHistory } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
@@ -7,6 +7,7 @@ import { UserContext } from '../App/App';
 const PostRecipe = () => {
     const history = useHistory();
     const { setUser } = useContext(UserContext);
+    const [stateErrors, setErrors] = useState(null);
 
     const onSubmit = (values) => {
         recipeServices.post(values)
@@ -14,7 +15,9 @@ const PostRecipe = () => {
                 setUser(res[0]);
                 history.push("/profile");
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+                setErrors({ err });
+            });
     }
 
     return (
@@ -123,8 +126,9 @@ const PostRecipe = () => {
                                 disabled={submitting || pristine} >
                                 Reset
                             </button>
+                        {stateErrors && (stateErrors.err === 500 || stateErrors.err === 401) && <span>We are sorry. We did not succesed to change recipe</span>}
+                        {stateErrors && (stateErrors.err === 304) && <span>There is nothing to change in this recipe</span>}
                         </div>
-                        {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
                     </form>
                 )}
             />
