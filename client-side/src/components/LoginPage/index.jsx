@@ -21,8 +21,6 @@ const LoginPage = () => {
             .catch(err => {
                 setErrors({ err });
                 setUser(null);
-                console.log(err);
-                console.log(stateErrors);
             });
     }
 

@@ -8,10 +8,8 @@ const DeleteRecipe = ({ title, id, from, setAskingDelete, askingDelete, setIsRec
     const handleDelete = () => {
         recipeServices.delete(id)
             .then((res) => {
-                console.log(res)
                 setUser(res);
                 setIsRecipesUpdate(true);
-                // document.location.href = from.pathname;
             })
             .catch(err => console.log(err));
     }

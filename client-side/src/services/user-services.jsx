@@ -39,7 +39,6 @@ const userServices = {
         })
     },
     put: (id, data) => {
-        console.log(id, data)
         return fetch(`${userUrl}/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
@@ -48,7 +47,6 @@ const userServices = {
             },
             credentials: 'include'
         }).then(res => {
-            console.log(res);
             return res.status === 200 ?
                     res.json() : Promise.reject(res.status)
         })
@@ -68,17 +66,5 @@ const userServices = {
         });
     }
 }
-
-// function statusHandler(response) {
-//     if (response.status >= 400) {
-//         console.log(response.message)
-//         throw new Error(response);
-//     }
-//     return response.json();
-// }
-
-// function errorHandler(error) {
-//     console.error(error);
-// }
 
 export default userServices;
