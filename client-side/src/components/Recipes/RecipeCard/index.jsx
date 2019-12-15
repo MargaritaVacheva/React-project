@@ -10,6 +10,7 @@ const RecipeCard = ({ recipe }) => {
     const [askingDelete, setAskingDelete] = useState(false);
 
     let { _id, image, title, serves, cookingTime, prepTime, author } = recipe;
+  
     image = image || defaultImage;
 
     const handleWantDelete = () => {
