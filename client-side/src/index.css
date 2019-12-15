@@ -47,7 +47,7 @@ p, ul, ol {
     min-height: 100vh;
     display:flex; 
     flex-direction:column;
-    /* background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('../src/photos/jeshoots-com-7VOyZ0-iO0o-unsplash.jpg'); */
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2)), url(./photos/joanna-kosinska-llLttk4TgT4-unsplash.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -252,14 +252,14 @@ div.recipe-tile {
     flex: 0 1 30%;
     border: 1px solid rgba(128, 128, 128, 0.774);
     width: calc( (100% / 3) - 2em );
-    height: 33em;
+    height: 38em;
     padding: 0.8em;
     margin: 1em;
 }
 
 div.recipe-tile img {
     width: 90%;
-    height: 70%;
+    height: 68%;
     margin: 0.4em auto;
 }
 
@@ -283,10 +283,23 @@ div.recipe-tile div .buttons {
     justify-content: space-evenly;
 }
 
+div.recipe-tile div .buttons button {
+    height: 2.4em;
+    background: rgb(161, 15, 15);
+    border-color: rgb(161, 15, 15);
+    color: rgb(247, 230, 199);
+    box-shadow: grey;
+    border-radius: 0.7rem;
+    font-size: 1em;
+    line-height: 0.9em;
+    padding: 0 0.6em;
+    margin-top: 0.2em;
+}
+
 div.recipe-tile div a,
 div.details-recipe div div a {
     font-size: 0.8em;
-    padding: 0.4rem 0.2em;
+    padding: 0.6rem 0.2em;
     background: rgb(216, 28, 94);
     color: rgb(247, 230, 199);
     border-color: rgb(216, 28, 94);
@@ -296,6 +309,36 @@ div.details-recipe div div a {
     box-shadow: 2px 2px 2px rgba(38,16,10,0.8);
     transition: 0.3s;
     width: 30%;
+}
+
+div.recipe-tile .delete-section {
+    font-family: serif;
+    padding-top: 2em;
+    display: flex;
+    flex-flow: column;
+}
+
+div.recipe-tile .delete-section button {
+    margin-top: 1em;
+    padding: 02. 0.4em;
+    height: 2.5em;
+    background: rgb(161, 15, 15);
+    border-color: rgb(161, 15, 15);
+    color: rgb(247, 230, 199);
+    box-shadow: grey;
+    border-radius: 0.7rem;
+    font-size: 1em;
+}
+
+div.recipe-tile .delete-section span {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+div.recipe-tile .delete-section button:nth-child(3) {
+    background: rgb(100, 93, 93);
+    border-color: rgb(100, 93, 93);
+    color: rgb(247, 230, 199);
 }
 
 #recipe-details-btn {
@@ -390,6 +433,16 @@ div.profile img {
     background-color: rgb(223, 4, 82);
     border-radius: 0.5em;
     text-decoration: none;
+}
+
+.profile div.profile-actions a:nth-child(1) {
+    margin-left: 22em;
+    margin-right: 3em;
+}
+
+.profile div.profile-actions a:nth-child(2) {
+    padding: 0.5em 2em;
+    margin-left: 2em;
 }
 
 /* error-page */

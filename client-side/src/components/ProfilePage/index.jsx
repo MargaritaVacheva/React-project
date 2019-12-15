@@ -22,7 +22,7 @@ const ProfilePage = () => {
                 <span>{user.email}</span>
             </div>
             <p>Share your knowledge.</p>
-            <div>
+            <div className="profile-actions">
                 <Link to="/postRecipe">Add new recipe</Link>
                 <Link to="/editProfie">Edit Profile</Link>
             </div>

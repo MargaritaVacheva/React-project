@@ -6,13 +6,17 @@ const Recipes = () => {
     const [recipes, setRecipes] = useState(null);
     const title = 'All recipes';
 
-    useEffect(() => {
+    const loadRecipes = () => {
         recipeServices.load()
             .then((recipes) => {
                 setRecipes(recipes);
             })
             .catch(err => console.log(err));
-    }, [])
+    }
+
+    useEffect(() => {
+        loadRecipes();
+        }, [])
 
     return (
         <RecipeList title={title} recipes={recipes}/>

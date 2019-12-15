@@ -20,13 +20,11 @@ const LoginPage = () => {
             })
             .catch(err => {
                 setErrors({ err });
+                setUser(null);
                 console.log(err);
                 console.log(stateErrors);
             });
     }
-
-    //To Do stateErrors
-
 
     if (!user) {
         return (
@@ -59,16 +57,15 @@ const LoginPage = () => {
                                 <Link to="/register">Sign Up</Link>
                                 <button type="submit" disabled={submitting}>
                                     Login
-                       </button>
+                                    </button>
                                 <button
                                     type="button"
                                     onClick={form.reset}
                                     disabled={submitting || pristine} >
                                     Reset
-                       </button>
+                                        </button>
                                 {stateErrors && (stateErrors.err === 401) && <span>Wrong username or password</span>}
                             </div>
-                            {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
                         </form>
                     )}
                 />

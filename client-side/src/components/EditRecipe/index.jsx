@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
 import { UserContext } from '../App/App';
 

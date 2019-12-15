@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Form, Field } from 'react-final-form';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import recipeServices from '../../services/recipes-services';
 import { UserContext } from '../App/App';
 
@@ -11,7 +11,6 @@ const PostRecipe = () => {
     const onSubmit = (values) => {
         recipeServices.post(values)
             .then((res) => {
-                // console.log(res[0])
                 setUser(res[0]);
                 history.push("/profile");
             })

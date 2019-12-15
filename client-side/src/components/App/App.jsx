@@ -20,32 +20,23 @@ import ErrorPage from '../ErrorPage';
 import Main from '../Main';
 import Footer from '../Footer';
 import './App.css';
-import imageDefault from '../../photos/joanna-kosinska-llLttk4TgT4-unsplash.jpg';
 
 export const UserContext = createContext(null);
 
 const App = () => {
   const [isSnowing, setIsSnow] = useState(false);
-  const [background, setBackground] = useState("");
-  const [imageUrl, setImageUrl] = useState(imageDefault);
-
   const [user, setUser] = useState(null);
 
   const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
-  const snowHandler = (ev) => {
+  const snowHandler = () => {
     isSnowing ?
       setIsSnow(false) :
       setIsSnow(true);
   }
 
-  let style = imageUrl ?
-    { backgroundImage: `linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2)), url(${imageUrl})` } :
-    { background }
-
   return (
-    <div className="App" style={style}>
-
+    <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={userValue}>
           <Auth>
@@ -87,7 +78,7 @@ const App = () => {
 export default App;
 
 
-const RouteAuthWrapper = ({ component: Component, ...routeProps }) => {
+export const RouteAuthWrapper = ({ component: Component, ...routeProps }) => {
   const { user } = useContext(UserContext);
   let location = useLocation();
   return (
