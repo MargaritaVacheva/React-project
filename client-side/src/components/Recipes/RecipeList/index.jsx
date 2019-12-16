@@ -9,7 +9,7 @@ const RecipeList = ({ title, recipes, isRecipesUpdate, setIsRecipesUpdate }) => 
                 {
                     recipes ?
                         <>
-                            <div>{recipes.map((recipe, i) => <RecipeCard recipe={recipe} key={i}
+                            <div>{recipes.map((recipe, i) => <RecipeCard recipe={recipe} key={recipe._id}
                              isRecipesUpdate={isRecipesUpdate} 
                              setIsRecipesUpdate={setIsRecipesUpdate}/>)}</div>
                         </>
