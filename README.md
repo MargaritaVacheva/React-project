@@ -17,8 +17,9 @@
    1. First you have to start MongoD typing `mongod` in terminal. 
    If ypu don\`t have it, please install it [MongoDb](https://mongodb.com) .
    2. Write `npm install` in both directories - _client-side_ and _REST API_. 
-   #### bcrypt
+   ###### bcrypt
    If you hit a problem with bcrypt while installing dependencies, try to `npm install bcrypt@3.0.6`.
+   
    3.In  _client-side_ write `npm start` in terminal. It will run the project at http://localhost:3000 .
    4. in _REST API_ directory write `node index` in terminal. It will run the server at http://localhost:9999 .
    
